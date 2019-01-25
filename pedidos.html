@@ -120,6 +120,10 @@ background-color:#2f241e;
 }
 a:link, a:visited { 
   text-decoration: none;
+ }
+ input[type=number]{
+    width: 40px;
+} 
 </style>
 <!-- Pagina -->
 <link rel="icon" href="imagens/websiteicon.png">
@@ -146,11 +150,11 @@ a:link, a:visited {
 	
 	<br><FORM name='ficha' method="post" action="mailto:empresa@mail.pt"  
 			onSubmit="return validar();">
-<table style="color:#2f241e;border:0px solid #af9283" width=25% align="center" cellspacing="10"   BGCOLOR="af9283">
+<table style="color:#2f241e;border:0px solid #af9283" width=30% align="center" cellspacing="20"   BGCOLOR="af9283">
 <tr>
-<td style="border:0px solid #af9283"><font size="4"><b>Nome:</td>				<td align="center" style="border:0px solid #af9283"><input type=text id="nome" autofocus value="escreve aquim..."></td></tr>
+<td style="border:0px solid #af9283"><font size="4"><b>Nome:</td>				<td align="center" style="border:0px solid #af9283"><input type=text id="nome" autofocus value="escreve aqui..." size="35"></td></tr>
 <tr>
-<td style="border:0px solid #af9283"><font size="4"><b>Morada:</td>			<td align="center" style="border:0px solid #af9283"><input type=text id="morada"></td></tr>
+<td style="border:0px solid #af9283"><font size="4"><b>Morada:</td>			<td align="center" style="border:0px solid #af9283"><input type=text id="morada" size="35" ></td></tr>
 <tr>
 <td style="border:0px solid #af9283"><font size="4"><b>Localidade:</td>		<td align="center" style="border:0px solid #af9283"><input type=text id="localidade"></td></tr>
 <tr>
@@ -169,9 +173,10 @@ a:link, a:visited {
 								</select></tr>
 <tr>								
 <td style="border:0px solid #af9283"><font size="4"><b>Varinhas:</td>			
-								<td style="border:0px solid #af9283"><input type=text name="madeiraquantidadecedro" size="1">Madeira de Cedro <br>
-								<input type=text name="madeiraquantidadecarvalho" size="1">Madeira de Carvalho<br>
-								<input type=text name="madeiraquantidadenogueira" size="1">Madeira de Nogueira</td></tr>
+								<td style="border:0px solid #af9283">
+								<input type="number" min="0" max="20" name="madeiraquantidadecedro" >Madeira de Cedro <br>
+								<input type="number" min="0" max="20" name="madeiraquantidadecarvalho" >Madeira de Carvalho<br>
+								<input type="number" min="0" max="20" name="madeiraquantidadenogueira" >Madeira de Nogueira</td></tr>
 
 
 	
