@@ -1,6 +1,113 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<SCRIPT>
+	 
+	function validar()
+	{	
+		var id_nome = document.getElementById('nome');
+		var id_morada = document.getElementById('morada');
+		var id_localidade = document.getElementById('localidade');
+		var id_telemovel = document.getElementById('telemovel');
+		var id_data_nascimento = document.getElementById('data_de_nascimento');
+		var id_bi = document.getElementById('bi');
+		var id_email = document.getElementById('email');
+		var id_trabalho = document.getElementById('trabalho');
+		var id_curriculo = document.getElementById('curriculo');
+
+		if (id_nome.value.length == 0)
+		{
+			alert("Faltou o nome");
+
+			return false;
+		}
+		
+		if (id_morada.value.length == 0)
+		{
+			alert("Faltou a morada");
+
+			return false;
+		}
+		
+		if (id_localidade.value.length == 0)
+		{
+			alert("Faltou a localidade");
+
+			return false;
+		}
+		
+		if ( isNaN(id_telemovel.value) )
+		{
+			alert("O telemovel deve conter apenas algarismos");
+
+			return false;
+		}
+		
+		if (id_telemovel.value.length == 0) 
+		{
+			alert("Faltam digitos no telemovel");
+
+			return false;
+		}
+		
+		if (id_data_nascimento.value.length == 0)
+		{
+			alert("Faltou a data de nascimento");
+
+			return false;
+		}
+
+		if ( isNaN(id_bi.value) )
+		{
+			alert("O BI deve conter apenas algarismos");
+				
+			return false;
+		}
+		
+		if (id_bi.value.length < 10)
+		{
+			alert("Insira todos os numeros do BI");
+				
+			return false;
+		}
+	 
+		if (id_email.value.indexOf("@") == -1) 
+		{
+			alert("Email invalido");
+				
+			return false;
+		}
+		if (id_email.value.indexOf("!#$%^&*()+=-[]\\\';,/{}|\":<>?")!=-1)
+		{
+			alert("Email invalido");
+				
+			return false;
+		}
+		if (id_email.value.length == 0)
+		{
+			alert("Faltou o E-mail");
+
+			return false;
+		}
+		
+		if (id_trabalho.value.length == 0)
+		{
+			alert("Falta o trabalho");
+
+			return false;
+		}
+		if (id_curriculo.value.length == 0)
+		{
+			alert("Faltou o Currículo");
+
+			return false;
+		}
+		return true;
+
+
+	}
+
+</SCRIPT>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Ollivander's - Pedidos</title>
 </head>
@@ -11,6 +118,8 @@ table, th, td {
 .btn:hover{
 background-color:#2f241e;
 }
+a:link, a:visited { 
+  text-decoration: none;
 </style>
 <!-- Pagina -->
 <link rel="icon" href="imagens/websiteicon.png">
@@ -33,38 +142,50 @@ background-color:#2f241e;
 	
 	<TR BGCOLOR="af9283">
       <TD ALIGN=center COLSPAN=5 >
-	  <p><h2><font size="6" color="2f241e"><b>Pedidos</b></font></h2></p>
+	  <p><h2><font size="6" color='2f241e'><b>Pedidos</b></font></h2></p>
 	
-	<font size="5" color="2f241e"><FORM method="post" action="mailto:luis.morgado@my.istec.pt" >
-	<b>Nome:</b><input type=text name="nome" size="30"></P>
-	<b>Morada:</b><input type=text name="morada" size="30"></P>
-	<b>Localidade:</b><input type=text name="localidade" size="30"></P>
-	<b>Telemóvel:</b><input type=text name="telemovel" size="30"></P>
-	<b>Idade:</b><input type=text name="idade" size="30" ></P>
-	<b>Sexo:</b><select name="sexo">
-			<option>Masculino</option>
-			<option>Feminino</option>
-	</select></p>
-	<p><font size="6" color="2f241e"><b>Varinhas</b></font></p>
-	
-		<b>Tipos: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Quantidade:</b><br><font size="5">
-			Madeira de Cedro &nbsp &nbsp &nbsp &nbsp &nbsp <input type=text name="madeiraquantidadecedro" size="1"><br>
-			Madeira de Carvalho&nbsp &nbsp &nbsp <input type=text name="madeiraquantidadecarvalho" size="1"><br>
-			Madeira de Nogueira&nbsp &nbsp &nbsp <input type=text name="madeiraquantidadenogueira" size="1"><br>
-			
-	
-	
-	
+	<br><FORM name='ficha' method="post" action="mailto:empresa@mail.pt"  
+			onSubmit="return validar();">
+<table style="color:#2f241e;border:0px solid #af9283" width=25% align="center" cellspacing="10"   BGCOLOR="af9283">
+<tr>
+<td style="border:0px solid #af9283"><font size="4"><b>Nome:</td>				<td align="center" style="border:0px solid #af9283"><input type=text id="nome" autofocus value="escreve aquim..."></td></tr>
+<tr>
+<td style="border:0px solid #af9283"><font size="4"><b>Morada:</td>			<td align="center" style="border:0px solid #af9283"><input type=text id="morada"></td></tr>
+<tr>
+<td style="border:0px solid #af9283"><font size="4"><b>Localidade:</td>		<td align="center" style="border:0px solid #af9283"><input type=text id="localidade"></td></tr>
+<tr>
+<td style="border:0px solid #af9283"><font size="4"><b>Telemóvel:</td>			<td align="center" style="border:0px solid #af9283"><input type=text id="telemovel" maxlength="9"></td></tr>
+<tr>
+<td style="border:0px solid #af9283"><font size="4"><b>Data de Nascimento:</td><td align="center" style="border:0px solid #af9283"><input type="date" id="data_de_nascimento"></td></tr>
+<tr>
+<td style="border:0px solid #af9283"><font size="4"><b>BI:</td>				<td align="center" style="border:0px solid #af9283"><input type=text id="bi" maxlength="10" minlength></td></tr>
+<tr>
+<td style="border:0px solid #af9283"><font size="4"><b>E-mail:</td>			<td align="center" style="border:0px solid #af9283"><input type="email" id="email"></td></tr>
+<tr>
+<td style="border:0px solid #af9283"><font size="4"><b>Sexo:</td> 				
+								<td align="center" style="border:0px solid #af9283"><select id="sexo">
+								<option>Masculino</option>
+								<option>Feminino</option></td>
+								</select></tr>
+<tr>								
+<td style="border:0px solid #af9283"><font size="4"><b>Varinhas:</td>			
+								<td style="border:0px solid #af9283"><input type=text name="madeiraquantidadecedro" size="1">Madeira de Cedro <br>
+								<input type=text name="madeiraquantidadecarvalho" size="1">Madeira de Carvalho<br>
+								<input type=text name="madeiraquantidadenogueira" size="1">Madeira de Nogueira</td></tr>
 
-<input type="submit" value="Enviar Pedido"></font></FORM>
+
+	
+<tr>	
+<td style="border:0px solid #af9283"  COLSPAN=2 align="center" ><input type="reset" value="Reset"><input type="submit" value="Submeter Dados"></td></td></table>	
 	  
 	  
+	  <p>
 	  
-	  
+	 
 	  
     </TR>
 	
-	
+
 	
 	</TABLE>
 </body>
