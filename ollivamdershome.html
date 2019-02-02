@@ -4,6 +4,28 @@
 <style>
 .help {cursor: help;}
 </style>
+<script>
+          function displayNextImage() {
+              x = (x === images.length - 1) ? 0 : x + 1;
+              document.getElementById("img").src = images[x];
+          }
+
+          function displayPreviousImage() {
+              x = (x <= 0) ? images.length - 1 : x - 1;
+              document.getElementById("img").src = images[x];
+          }
+
+          function startTimer() {
+              setInterval(displayNextImage, 2000);
+          }
+
+          var images = [], x = -1;
+          images[0] = "imagens/slideshow/image2.jpg";
+          images[1] = "imagens/slideshow/image3.jpg";
+          images[2] = "imagens/slideshow/image5.jpg";
+		  images[3] = "imagens/slideshow/image4.jpg";
+		  images[4] = "imagens/slideshow/image1.jpg";
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" name="viewport" content="width=device-width, initial-scale=2.0">
 <title>Ollivander's - Loja de Varinhas</title>
 </head>
@@ -20,10 +42,10 @@ a:link, a:visited {
 </style>
 <link rel="icon" href="imagens/websiteicon.png">
 <body TEXT="#bebb6f" background="imagens/background2.jpg">
-	<TABLE BGCOLOR="8a9da8" ALIGN="CENTER" WIDTH=80% HEIGHT=500 cellspacing="0" >
+	<TABLE BGCOLOR="8a9da8" ALIGN="CENTER" WIDTH=70% HEIGHT=auto cellspacing="0" >
 		
 	<TR BGCOLOR="4e3c32">
-      <TD ALIGN=CENTER COLSPAN=5><a href="ollivamdershome.html" title="Ir para a página inicial"><img src="imagens/logo2.png" alt="icon2" width="800" height="300"></TD>
+      <TD ALIGN=CENTER COLSPAN=5><a href="ollivamdershome.html" title="Ir para a página inicial"><img src="imagens/logo2.png" alt="icon2" width="800" height=auto></TD>
     </TR>
 	<TR TEXT="#bebb6f" BGCOLOR="6d5346"}">
       <TH ALIGN=CENTER COLSPAN=1 class="btn"><H2><a href="historia.html" style="color:#bebb6f;">História</a></TH>
@@ -38,9 +60,13 @@ a:link, a:visited {
 	  
 	
 	  
-	  <p><img src="imagens/cartaz_final_reduzido.png" ALIGN=center></p>
-	  <p><img src="imagens/cartaz_rua.jpg" ALIGN=center></p>
-	  <p><img src="imagens/loja_ollivanders.jpg" ALIGN=center></TD></p>
+	<p>
+   <body onload = "startTimer()">
+       <img id="img" src="imagens/slideshow/image1.jpg" WIDTH=50% HEIGHT=50%>
+	   <p>
+       <button type="button" onclick="displayPreviousImage()">Previous</button>
+       <button type="button" onclick="displayNextImage()">Next</button>
+   </body>
     </TR>
 
 	
