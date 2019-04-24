@@ -46,27 +46,25 @@
   border-left:2px solid #E2E2E2;
   
 }
-@media screen and (max-width:925px) {
-  .center, .right {
-    width:100%; /* The width is 100%, when the viewport is 800px or smaller */
-  }
-}
 
 
 .navbar a.center {
   background-color: #3B3131;
   color: #E2E2E2;
-  font-size: 30px;
-  padding: 1.1% 1.34%;
-  width: 40%;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 1.1% 2%;
+  float: center;
+  
 
 }
 .navbar a.center:hover {
   background-color: #3B3131;
   color: #E2E2E2;
-  font-size: 30px;
-  padding: 1.1% 1.34%;
-  width: 40%;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 1.1% 2%;
+  float: center;
 
 }
 
@@ -76,7 +74,20 @@
   color: black;
 }
 
+@media screen and (max-width:716px) {
+  a.center{
+    width:97%; 
+    text-align: center;
+    
+  }
+  .right {
+  width:100%;
+  float: center;
+  text-align: center;
+  border-top: 1px solid #E2E2E2;
+  }
 
+}
 
 	</style>
   </head>
