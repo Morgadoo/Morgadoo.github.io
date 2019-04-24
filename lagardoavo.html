@@ -4,7 +4,7 @@
     <title>Lagar Do Avô</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style>
 
 	body {
@@ -12,7 +12,7 @@
 
 
   	#painel {
-    border: 5px solid #5E5757;
+    
     width:99.5%;
     height:70px;
     background-color:#3B3131;
@@ -96,7 +96,22 @@
 }
 
 	</style>
+
+	<script>  
+
+$(document).ready(function(){
+    $(".right").click(function(){
+        $("#_historia").animate({
+            height: 'toggle'
+        });
+    });
+});
+</script>
   </head>
+
+
+
+
   <body>
 
 	<div class="navbar">
@@ -111,6 +126,8 @@
   <a href="#" class="right">História</a>
 
 	</div>
+
+	<script id=_historia style="width:100%;height:200px;background-color:#a15c12;"></script>
 
 
   	<h2>Site em Desenvolvimento</h2>
