@@ -2,8 +2,9 @@
 <html lang="pt-pt">
   <head>
     <title>Lagar Do Avô</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <style>
 
 	body {
@@ -17,12 +18,13 @@
     background-color:#3B3131;
 	color:#E2E2E2;
 	font-size: 40px;
-	font-family: Arial;}
+	font-family: Arial;
+}
 
   .navbar {
   overflow: hidden;
   background-color: #3B3131;
-  font-size: 30px;
+  font-size: 20px;
   font-family: Arial;
 }
 
@@ -32,18 +34,40 @@
   display: block;
   color: #E2E2E2;
   text-align: center;
-  padding: 14px 40px;
+  padding: 1.5% 2%;
   text-decoration: none;
 }
+
+
 
 /* Right-aligned link */
 .navbar a.right {
   float: right;
+  border-left:2px solid #E2E2E2;
+  
+}
+@media screen and (max-width:925px) {
+  .center, .right {
+    width:100%; /* The width is 100%, when the viewport is 800px or smaller */
+  }
 }
 
-.navbar a.left:hover {
+
+.navbar a.center {
   background-color: #3B3131;
   color: #E2E2E2;
+  font-size: 30px;
+  padding: 1.1% 1.34%;
+  width: 40%;
+
+}
+.navbar a.center:hover {
+  background-color: #3B3131;
+  color: #E2E2E2;
+  font-size: 30px;
+  padding: 1.1% 1.34%;
+  width: 40%;
+
 }
 
 /* Change color on hover */
@@ -52,15 +76,16 @@
   color: black;
 }
 
+
+
 	</style>
   </head>
   <body>
 
 	<div class="navbar">
-	<a href="#" class="left">Lagar do Avô</a>
-  
-  
-  
+
+
+  <a href="#" class="center">Lagar do Avô</a>
   
   <a href="#" class="right">Museus</a>
   <a href="#" class="right">Live</a>
@@ -70,7 +95,8 @@
 
 	</div>
 
-  	<p>Site em Desenvolvimento</p>
+
+  	<h2>Site em Desenvolvimento</h2>
   
 
   </body>
