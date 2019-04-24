@@ -34,8 +34,9 @@
   display: block;
   color: #E2E2E2;
   text-align: center;
-  padding: 1.5% 2%;
+  padding: 1% 2%;
   text-decoration: none;
+
 }
 
 
@@ -53,25 +54,27 @@
   color: #E2E2E2;
   font-size: 25px;
   font-weight: bold;
-  padding: 1.1% 2%;
+  padding: 0.63% 2%;
+
   float: center;
   
 
 }
 .navbar a.center:hover {
-  background-color: #3B3131;
+  background-color: #3B3131; 
   color: #E2E2E2;
   font-size: 25px;
   font-weight: bold;
-  padding: 1.1% 2%;
+  padding: 0.63% 2%;
+ 
   float: center;
 
 }
 
 /* Change color on hover */
 .navbar a:hover {
-  background-color: #ddd;
-  color: black;
+  background-color: #E2E2E2;
+  color: #3B3131;
 }
 
 @media screen and (max-width:716px) {
@@ -88,6 +91,9 @@
   }
 
 }
+#active {
+  background-color: #a15c12;
+}
 
 	</style>
   </head>
@@ -96,12 +102,12 @@
 	<div class="navbar">
 
 
-  <a href="#" class="center">Lagar do Avô</a>
+  <a href="#" class="center">Lagar Do Avô</a>
   
-  <a href="#" class="right">Museus</a>
+  <a href="#" class="right" >Museus</a>
   <a href="#" class="right">Live</a>
   <a href="#" class="right">Contactos</a>
-  <a href="#" class="right">Galeria</a>
+  <a href="#" class="right" id=active>Galeria</a>
   <a href="#" class="right">História</a>
 
 	</div>
