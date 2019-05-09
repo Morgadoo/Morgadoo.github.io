@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-pt">
-  <head>
-    <title>Lagar Do Avô</title>
-    <meta charset="UTF-8">
+<head>
+<html lang="pt-pt">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Lagar Do Avô</title>
+ <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="jquery-3.3.1.min.js"></script>
     <style>
 
 	body {
@@ -13,7 +17,7 @@
 
   	#painel {
     
-    width:99.5%;
+    width:100%;
     height:70px;
     background-color:#3B3131;
 	color:#E2E2E2;
@@ -55,7 +59,6 @@
   font-size: 25px;
   font-weight: bold;
   padding: 0.63% 2%;
-
   float: center;
   
 
@@ -91,8 +94,16 @@
   }
 
 }
-#active {
-  background-color: #a15c12;
+.active {
+  background-color: #8f0024;
+}
+
+#_historia {
+	width:100%;
+	height:160px;
+	background-color:#8f0024;
+	position: relative;
+
 }
 
 	</style>
@@ -102,10 +113,14 @@
 $(document).ready(function(){
     $(".right").click(function(){
         $("#_historia").animate({
-            height: 'toggle'
-        });
+            height: 'toggle'},600);
     });
 });
+
+
+
+
+
 </script>
   </head>
 
@@ -114,24 +129,38 @@ $(document).ready(function(){
 
   <body>
 
-	<div class="navbar">
+	<div class="navbar" id="myDIV">
 
 
   <a href="#" class="center">Lagar Do Avô</a>
   
-  <a href="#" class="right" >Museus</a>
+  <a href="#" class="right">Museus</a>
   <a href="#" class="right">Live</a>
   <a href="#" class="right">Contactos</a>
-  <a href="#" class="right" id=active>Galeria</a>
+  <a href="#" class="right active">Galeria</a>
   <a href="#" class="right">História</a>
 
 	</div>
 
-	<script id=_historia style="width:100%;height:200px;background-color:#a15c12;"></script>
+	<script id="_historia"></script>
+
+	<script>
+// Add active class to the current button (highlight it)
+var header = document.getElementById("myDIV");
+var btns = header.getElementsByClassName("right");
+
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("active");
+  current[0].className = current[0].className.replace(" active", "");
+  this.className += " active";
+  });
+}
+</script>
 
 
   	<h2>Site em Desenvolvimento</h2>
   
 
-  </body>
-</html>
+  
+</body></html>
