@@ -1,0 +1,187 @@
+
+<html>
+<head>
+<meta charset=utf-8>
+<title>My first three.js app</title>
+<style> body { margin: 0; } canvas { width: 100%; height: 100% }
+</style>
+</head>
+<body>
+
+
+<script src="js/three.js"></script>
+<script src="js/OrbitControls.js"></script>
+
+
+
+<script> // Our Javascript will go here.
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera( 55, window.innerWidth /
+window.innerHeight, 1, 500 );
+
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
+
+var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+var geometry1 = new THREE.BoxGeometry( 1, 1, 1 );
+var material1 = new THREE.MeshLambertMaterial( { color: 0xffffff });
+var material2 = new THREE.MeshLambertMaterial( { color: 0xffff00 });
+var material3 = new THREE.MeshLambertMaterial( { color: 0x33cc33 });
+var material4 = new THREE.MeshLambertMaterial( { color: 0x0033cc });
+var material5 = new THREE.MeshLambertMaterial( { color: 0xff0000 });
+var cube1 = new THREE.Mesh( geometry1, material1 );
+var cube2 = new THREE.Mesh( geometry, material2 );
+var cube3 = new THREE.Mesh( geometry, material3 );
+var cube4 = new THREE.Mesh( geometry, material4 );
+var cube5 = new THREE.Mesh( geometry, material5 );
+var sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5,40,40),material1);
+
+
+//light
+var ambientLight = new THREE.AmbientLight(0xffffff,0.3);
+var directLight = new THREE.PointLight(0xffffff,3.5);
+
+directLight.position.z=5;
+scene.add(ambientLight);
+scene.add(directLight);
+
+
+
+//control
+control = new THREE.OrbitControls(camera,renderer.domElement)
+
+//skybox
+
+var geometrysky = new THREE.CubeGeometry(10000,10000,10000);
+//test
+/*
+var loader = new THREE.CubeTextureLoader();
+loader.setPath( 'file://js/img/' );
+
+var textureCube = loader.load( [
+	'front.png', 'back.png',
+	'up.png', 'down.png',
+	'right.png', 'left.png'
+] );
+
+
+
+//sssssssssssss*/
+
+var cubeMaterials = [ 
+
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("js/img/front.png"), side: THREE.DoubleSide}),
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("js/img/back.png"), side: THREE.DoubleSide}),
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("js/img/up.png"), side: THREE.DoubleSide}),
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("js/img/down.png"), side: THREE.DoubleSide}),
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("js/img/right.png"), side: THREE.DoubleSide}),
+	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("js/img/left.png"), side: THREE.DoubleSide})
+
+
+]; 
+
+//var materialskys = new THREE.MeshBasicMaterial( { color: 0xffffff, envMap: textureCube } );
+
+var cubesky = new THREE.Mesh(geometrysky,cubeMaterials);
+scene.add(cubesky);
+
+
+
+
+
+scene.add( sphere );
+camera.position.set( 0, -20, 15 );
+camera.lookAt( new THREE.Vector3( 0, 0, 0 ) );
+
+scene.add( cube2 );
+scene.add( cube3 );
+scene.add( cube4 );
+scene.add( cube5 );
+
+cube2.position.x = 2;
+cube3.position.x = -2;
+cube4.position.y = 2;
+cube5.position.y = -2;
+
+
+//create a LineBasicMaterial 
+var materiallinha = new THREE.LineBasicMaterial( { color: 0xff0000 } );
+var geometry = new THREE.Geometry();
+geometry.vertices.push(new THREE.Vector3( -10, 0, 0) );
+geometry.vertices.push(new THREE.Vector3( 0, 10, 0) );
+geometry.vertices.push(new THREE.Vector3( 10, 0, 0) );
+geometry.vertices.push(new THREE.Vector3( 0, -10, 0) );
+geometry.vertices.push(new THREE.Vector3( -10, 0, 0) );
+var line = new THREE.Line( geometry, materiallinha );
+scene.add(line);
+
+
+var angulo = 0;
+
+function animate()
+{ requestAnimationFrame( animate );
+renderer.render( scene, camera );
+cube2.rotation.y -= 0.1;
+cube3.rotation.y += 0.1;
+cube4.rotation.x += 0.1;
+cube5.rotation.x -= 0.1;
+
+
+angulo += 10;
+
+
+
+var cos=Math.cos(angulo);
+var sin=Math.sin(angulo);
+
+
+
+if (sphere.scale.x >= 5){
+	for(var i=0;i<=1000;i++){
+
+	sphere.scale.x-=0.01;
+	sphere.scale.y-=0.01;
+	sphere.scale.z-=0.01;
+}
+}else{
+	sphere.scale.x+=0.01;
+	sphere.scale.y+=0.01;
+	sphere.scale.z+=0.01;}
+
+
+
+
+
+
+if ( cube2.position.x >=10 ){
+	cube2.position.x =10;
+
+}else{cube2.position.x +=0.1;}
+
+
+
+
+if (cube3.position.x <=-10){
+	cube3.position.x =-10;
+}else {cube3.position.x -=0.1;}
+
+if (cube4.position.y >=10){
+	cube4.position.y =10;
+}else {cube4.position.y +=0.1;}
+
+if (cube5.position.y <=-10){
+	cube5.position.y =-10;
+}else {cube5.position.y -=0.1}
+
+}
+animate();
+</script>
+
+
+
+
+
+
+</body>
+</html>
