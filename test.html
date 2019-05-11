@@ -11,6 +11,7 @@
 
 <script src="js/three.js"></script>
 <script src="js/OrbitControls.js"></script>
+<script src="js/THREEx.WindowResize.js"></script>
 
 
 
@@ -35,7 +36,7 @@ var cube2 = new THREE.Mesh( geometry, material2 );
 var cube3 = new THREE.Mesh( geometry, material3 );
 var cube4 = new THREE.Mesh( geometry, material4 );
 var cube5 = new THREE.Mesh( geometry, material5 );
-var sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5,40,40),material1);
+var sphere = new THREE.Mesh(new THREE.SphereGeometry(0.5,80,80),material1);
 
 
 //light
@@ -46,30 +47,32 @@ directLight.position.z=5;
 scene.add(ambientLight);
 scene.add(directLight);
 
+//events
 
+THREEx.WindowResize(renderer, camera);
 
 //control
 control = new THREE.OrbitControls(camera,renderer.domElement)
 
 //skybox
-
-var geometrysky = new THREE.CubeGeometry(10000,10000,10000);
-//test
-/*
-var loader = new THREE.CubeTextureLoader();
-loader.setPath( 'file://js/img/' );
-
-var textureCube = loader.load( [
-	'front.png', 'back.png',
-	'up.png', 'down.png',
-	'right.png', 'left.png'
-] );
-
-
-
-//sssssssssssss*/
-
-var cubeMaterials = [ 
+var loader = new THREE.TextureLoader();
+loader.crossOrigin = true;
+   
+ var axes = new THREE.AxesHelper(100);
+	scene.add( axes );
+	
+	var imagePrefix = "js/img/";
+    var directions  = ["front", "back", "up", "down", "right", "left"];
+    var imageSuffix = ".png";
+	var skyGeometry = new THREE.CubeGeometry( 5000, 5000, 5000 );	
+	
+	/*var materialArray = [];
+	for (var i = 0; i < 6; i++)
+		materialArray.push( new THREE.MeshBasicMaterial({
+			map: THREE.TextureLoader( imagePrefix + directions[i] + imageSuffix ),
+			side: THREE.BackSide
+		}));*/
+	var materialArray = [ 
 
 	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("js/img/front.png"), side: THREE.DoubleSide}),
 	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("js/img/back.png"), side: THREE.DoubleSide}),
@@ -79,13 +82,13 @@ var cubeMaterials = [
 	new THREE.MeshBasicMaterial({map: new THREE.TextureLoader().load("js/img/left.png"), side: THREE.DoubleSide})
 
 
-]; 
+];
+	
+	var skyBox = new THREE.Mesh( skyGeometry, materialArray );
+	scene.add( skyBox );
 
-//var materialskys = new THREE.MeshBasicMaterial( { color: 0xffffff, envMap: textureCube } );
 
-var cubesky = new THREE.Mesh(geometrysky,cubeMaterials);
-scene.add(cubesky);
-
+//------------------
 
 
 
