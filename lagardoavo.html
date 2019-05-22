@@ -11,6 +11,9 @@
     <script src="jquery-3.3.1.min.js"></script>
     <style>
 
+
+
+
 	body {
   	background-color: #E2E2E2;}
 
@@ -26,6 +29,7 @@
 }
 
   .navbar {
+  	
   overflow: hidden;
   background-color: #3B3131;
   font-size: 20px;
@@ -98,11 +102,12 @@
   background-color: #80002a;
 }
 
-#_historia {
-	width:100%;
+.subbar {
+	width:50%;
 	height:160px;
 	background-color:#80002a;
 	position: relative;
+	left: 50%;
 
 }
 
@@ -111,13 +116,80 @@
 	<script>  
 
 $(document).ready(function(){
-    $(".right").click(function(){
-        $("#_historia").animate({
-            height: 'toggle'},600);
+    $("#_historia").click(function(){
+    	
+        $("#_0historia").animate({height: 'toggle'},600);
+    });
+
+});
+
+$(document).ready(function(){
+    $("#_galeria").click(function(){
+    	
+        $("#_0galeria").animate({height: 'toggle'},600);
+
+    });
+
+    
+});
+
+$(document).ready(function(){
+    $("#_contactos").click(function(){
+    	
+        $("#_0contactos").animate({height: 'toggle'},600);
+    });
+});
+
+$(document).ready(function(){
+    $("#_live").click(function(){
+    	
+        $("#_0live").animate({height: 'toggle'},600);
+    });
+});
+
+$(document).ready(function(){
+    $("#_museus").click(function(){
+
+        $("#_0museus").animate({height: 'toggle'},600);
     });
 });
 
 
+
+
+
+
+
+/*$(".right").click(function(){
+        $(".subbar").slideUp(600).slideDown(600);
+    });*/
+
+
+/*$(document).ready(function(){
+    $("#_historia.subbar").mouseenter(function(){
+    	$("#_0historia").show();
+    	});
+    $("#_historia, .subbar").mouseleave(function(){
+    	$("#_0historia").hide();
+    	});
+    });
+
+$(document).ready(function(){
+    $("#_galeria, .subbar").mouseenter(function(){
+    	$("#_0galeria").show();
+    	});
+     $("#_galeria,.subbar").mouseleave(function(){
+    	$("#_0galeria").hide();
+    	});
+});*/
+
+
+/*$(document).ready(function(){
+    $(".right").click(function(){
+        $(".subbar").css("color", "red").slideUp(600).slideDown(600);
+
+    });
+}); */
 
 
 
@@ -132,30 +204,35 @@ $(document).ready(function(){
 	<div class="navbar" id="myDIV">
 
 
-  <a href="#" class="center">Lagar Do Avô</a>
+  <a href="#" class="center">Teste</a> <!-- Lagar Do Avô -->
   
-  <a href="#" class="right">Museus</a>
-  <a href="#" class="right">Live</a>
-  <a href="#" class="right">Contactos</a>
-  <a href="#" class="right active">Galeria</a>
-  <a href="#" class="right">História</a>
+  <a href="#" class="right active" id="_museus">Museus</a>
+  <a href="#" class="right" id="_live">Live</a>
+  <a href="#" class="right" id="_contactos">Contactos</a>
+  <a href="#" class="right" id="_galeria">Galeria</a>
+  <a href="#" class="right" id="_historia">História</a>
 
 	</div>
 
-	<script id="_historia"></script>
+	<script id="_0museus" class="subbar">Museus</script>
+	<script id="_0live" class="subbar">Live</script>
+	<script id="_0contactos" class="subbar">Contactos</script>
+	<script id="_0galeria" class="subbar">Galeria</script>
+	<script id="_0historia" class="subbar">Historia</script>
 
 	<script>
-// Add active class to the current button (highlight it)
+// Button
 var header = document.getElementById("myDIV");
 var btns = header.getElementsByClassName("right");
 
 for (var i = 0; i < btns.length; i++) {
   btns[i].addEventListener("click", function() {
-  var current = document.getElementsByClassName("active");
-  current[0].className = current[0].className.replace(" active", "");
-  this.className += " active";
-  });
+  		var current = document.getElementsByClassName("active");
+  		current[0].className = current[0].className.replace(" active", "");
+  		this.className += " active";
+  	});
 }
+//end button
 </script>
 
 
