@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title>My first three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+			.label {
+				color: #FFF;
+				font-family: sans-serif;
+				padding: 2px;
+				background: rgba( 0, 0, 0, .6 );
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container"></div>
+		<script src="js/three.js"></script>
+		<script src="js/THREEx.WindowResize.js"></script>
+		<script src="js/OrbitControls.js"></script>
+		<script src="js/CSS2DRenderer.js"></script>
+		<script src="js/dat.gui.min.js"></script>
+
+		<script src="js/shaders/ConvolutionShader.js"></script>
+		<script src="js/shaders/CopyShader.js"></script>
+		<script src="js/shaders/FilmShader.js"></script>
+
+		<script src="js/postprocessing/EffectComposer.js"></script>
+		<script src="js/postprocessing/ShaderPass.js"></script>
+		<script src="js/postprocessing/MaskPass.js"></script>
+		<script src="js/postprocessing/RenderPass.js"></script>
+		<script src="js/postprocessing/BloomPass.js"></script>
+		<script src="js/postprocessing/FilmPass.js"></script>
+
+		<script src="js/WebGL.js"></script>
+
+		<script id="fragmentShader" type="x-shader/x-fragment">
+			uniform float time;
+			uniform float fogDensity;
+			uniform vec3 fogColor;
+			uniform sampler2D texture1;
+			uniform sampler2D texture2;
+			varying vec2 vUv;
+			void main( void ) {
+				vec2 position = - 1.0 + 2.0 * vUv;
+				vec4 noise = texture2D( texture1, vUv );
+				vec2 T1 = vUv + vec2( 1.5, - 1.5 ) * time * 0.02;
+				vec2 T2 = vUv + vec2( - 0.5, 2.0 ) * time * 0.01;
+				T1.x += noise.x * 2.0;
+				T1.y += noise.y * 2.0;
+				T2.x -= noise.y * 0.2;
+				T2.y += noise.z * 0.2;
+				float p = texture2D( texture1, T1 * 2.0 ).a;
+				vec4 color = texture2D( texture2, T2 * 2.0 );
+				vec4 temp = color * ( vec4( p, p, p, p ) * 2.0 ) + ( color * color - 0.1 );
+				if( temp.r > 1.0 ) { temp.bg += clamp( temp.r - 2.0, 0.0, 100.0 ); }
+				if( temp.g > 1.0 ) { temp.rb += temp.g - 1.0; }
+				if( temp.b > 1.0 ) { temp.rg += temp.b - 1.0; }
+				gl_FragColor = temp;
+				float depth = gl_FragCoord.z / gl_FragCoord.w;
+				const float LOG2 = 1.442695;
+				float fogFactor = exp2( - fogDensity * fogDensity * depth * depth * LOG2 );
+				fogFactor = 1.0 - clamp( fogFactor, 0.0, 1.0 );
+				gl_FragColor = mix( gl_FragColor, vec4( fogColor, gl_FragColor.w ), fogFactor );
+			}
+		</script>
+
+		<script id="vertexShader" type="x-shader/x-vertex">
+			uniform vec2 uvScale;
+			varying vec2 vUv;
+			void main()
+			{
+				vUv = uvScale * uv;
+				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+				gl_Position = projectionMatrix * mvPosition;
+			}
+		</script>
+
+
+		<script> 
+			//script inicial
+    
+   
+	if ( WEBGL.isWebGLAvailable() === false ) {
+				document.body.appendChild( WEBGL.getWebGLErrorMessage() );
+			}
+
+		var container,composer;
+		var uniforms;
+
+		var camera,scene,renderer,labelRenderer;
+
+		var planet1,planet2,planet3,planet4,planet5,moon;
+		var particleSystem;
+
+		var clock = new THREE.Clock();
+		var params = {
+				shadows: true,
+				exposure: 0.68,
+			
+			};
+
+
+			var textureLoader = new THREE.TextureLoader();
+
+		uniforms = {
+					"fogDensity": { value: 0 },
+					"fogColor": { value: new THREE.Vector3( 0, 0, 0 ) },
+					"time": { value: 0.001  },
+					"uvScale": { value: new THREE.Vector2( 3, 3 ) },
+					"texture1": { value: textureLoader.load('img/lava/sun_surface.png' ) },
+					"texture2": { value: textureLoader.load('img/lava/sun_surface.jpg' ) }
+				};
+
+				uniforms[ "texture1" ].value.wrapS = uniforms[ "texture1" ].value.wrapT = THREE.RepeatWrapping;
+				uniforms[ "texture2" ].value.wrapS = uniforms[ "texture2" ].value.wrapT = THREE.RepeatWrapping;
+
+		scene = new THREE.Scene();
+		clock = new THREE.Clock();
+		container = document.getElementById( 'container' );
+
+		/* CAMERA */
+    camera = new THREE.PerspectiveCamera( 75, window.innerWidth /window.innerHeight, 0.1,1000 );
+	camera.position.set(150,10,50);
+		
+
+	//skybox
+
+scene.background = new THREE.CubeTextureLoader().load( [ 
+	'./img/skybox2/pz.png',
+	'./img/skybox2/nz.png',
+	'./img/skybox2/py.png',
+	'./img/skybox2/ny.png',
+	'./img/skybox2/nx.png',
+	'./img/skybox2/px.png' ] );
+
+
+/* TEXTURES https://www.solarsystemscope.com/textures/ */
+			
+
+//materialSun.map   = THREE.ImageUtils.loadTexture('img/sun.jpg');
+
+
+
+//var suntexture = new THREE.TextureLoader().load( 'img/sun.jpg' );
+var suntexture = new THREE.TextureLoader().load( 'img/sun.jpg' );
+var venustexture = new THREE.TextureLoader().load( 'img/mercury.jpg' );
+var marstexture = new THREE.TextureLoader().load( 'img/mars.jpg' );
+var venus2texture = new THREE.TextureLoader().load( 'img/venus_atmosphere.jpg' );
+var earthtexture = new THREE.TextureLoader().load( 'img/earth.jpg' );
+var moontexture = new THREE.TextureLoader().load( 'img/moon.jpg' );
+var jupitertexture = new THREE.TextureLoader().load( 'img/jupiter.jpg' );
+var saturntexture = new THREE.TextureLoader().load( 'img/saturn.jpg' );
+var uranustexture = new THREE.TextureLoader().load( 'img/uranus.jpg' );
+var neptunetexture = new THREE.TextureLoader().load( 'img/neptune.jpg' );
+				
+				
+
+		/* MATERIALS */
+		var materialSun = new THREE.ShaderMaterial( { 
+			uniforms: uniforms,
+			vertexShader: document.getElementById( 'vertexShader' ).textContent,
+			fragmentShader: document.getElementById( 'fragmentShader' ).textContent
+			
+			
+		});
+
+		var materialPlanet1 = new THREE.MeshPhongMaterial( { 
+			map:venustexture,
+			reflectivity:1,  
+			specular:0x111111,
+			shininess:5
+			
+		});
+
+		var materialPlanet2 = new THREE.MeshPhongMaterial( { 
+			map:venus2texture,
+			reflectivity:1,  
+			specular:0x111111,
+			shininess:5
+			
+		});
+
+		var materialPlanet3 = new THREE.MeshPhongMaterial( { 
+			map:earthtexture,
+			reflectivity:1,  
+			specular:0x111111,
+			shininess:5
+			
+		});
+
+		var materialMoon1 = new THREE.MeshPhongMaterial( { 
+			map:moontexture,
+			reflectivity:1,  
+			specular:0x111111,
+			shininess:5
+			
+		});
+
+		var materialPlanet4 = new THREE.MeshPhongMaterial( { 
+			map:marstexture,
+			reflectivity:1,  
+			specular:0x111111,
+			shininess:5
+			
+		});
+
+		var materialPlanet5 = new THREE.MeshPhongMaterial( { 
+			map:jupitertexture,
+			reflectivity:1,  
+			specular:0x111111,
+			shininess:5
+			
+		});
+
+		var materialPlanet6 = new THREE.MeshPhongMaterial( { 
+			map:saturntexture,
+			reflectivity:1,  
+			specular:0x111111,
+			shininess:5
+			
+		});
+
+		var materialPlanet7 = new THREE.MeshPhongMaterial( { 
+			map:uranustexture,
+			reflectivity:1,  
+			specular:0x111111,
+			shininess:5
+			
+		});
+
+		var materialPlanet8 = new THREE.MeshPhongMaterial( { 
+			map:neptunetexture,
+			reflectivity:1,  
+			specular:0x111111,
+			shininess:5
+			
+		});
+
+		
+
+
+		/* SHAPES */
+
+
+
+
+    	var SunGeometry = new THREE.IcosahedronGeometry( 15, 4 );
+    	var PlanetGeometry1 = new THREE.IcosahedronGeometry( 0.5, 4 );
+    	var PlanetGeometry2 = new THREE.IcosahedronGeometry( 2, 4 );
+    	var PlanetGeometry3 = new THREE.IcosahedronGeometry( 2, 4 );
+    	var PlanetGeometry4 = new THREE.IcosahedronGeometry( 2, 4 );
+    	var PlanetGeometry5 = new THREE.IcosahedronGeometry( 6, 4 );
+    	var PlanetGeometry6 = new THREE.IcosahedronGeometry( 4, 4 );
+    	var PlanetGeometry7 = new THREE.IcosahedronGeometry( 3, 4 );
+    	var PlanetGeometry8 = new THREE.IcosahedronGeometry( 3, 4 );
+
+    	var MoonGeometry = new THREE.IcosahedronGeometry( 0.2, 4 );
+
+
+    	Sunfinal = new THREE.Mesh( SunGeometry, materialSun );
+		
+		
+		planet1 = new THREE.Mesh( PlanetGeometry1, materialPlanet1 );
+		planet2 = new THREE.Mesh( PlanetGeometry2, materialPlanet2 );
+		planet3 = new THREE.Mesh( PlanetGeometry3, materialPlanet3 );
+		planet4 = new THREE.Mesh( PlanetGeometry4, materialPlanet4 );
+		planet5 = new THREE.Mesh( PlanetGeometry5, materialPlanet5 );
+		planet6 = new THREE.Mesh( PlanetGeometry6, materialPlanet6 );
+		planet7 = new THREE.Mesh( PlanetGeometry7, materialPlanet7 );
+		planet8 = new THREE.Mesh( PlanetGeometry8, materialPlanet8 );
+
+		moon = new THREE.Mesh( MoonGeometry, materialMoon1 );
+
+
+
+		planet1.position.set(20,-0.25,0);
+		planet2.position.set(35,-1,0);
+		planet3.position.set(60,-1,0);
+		planet4.position.set(75,-1,0);
+		planet5.position.set(155,-3,0);
+		planet6.position.set(185,-2,0);
+		planet7.position.set(205,-1.5,0);
+		planet8.position.set(235,-1.5,0);
+
+
+
+
+
+		//SunGeometry.lightIntensity=30;
+
+		
+		scene.add( planet1 );
+		scene.add( planet2 );
+		scene.add( planet3 );
+		scene.add( planet4 );
+		scene.add( planet5 );
+		scene.add( planet6 );
+		scene.add( planet7 );
+		scene.add( planet8 );
+
+		scene.add( moon);
+		scene.add( Sunfinal);
+		
+
+		//Names
+
+
+		var sunDiv = document.createElement( 'div' );
+				sunDiv.className = 'label';
+				sunDiv.textContent = 'Sun';
+				sunDiv.style.marginTop = '-1em';
+				var sunLabel = new THREE.CSS2DObject( sunDiv );
+				sunLabel.position.set( 0,15, 0 );
+				Sunfinal.add( sunLabel );
+		
+		var mercuryDiv = document.createElement( 'div' );
+				mercuryDiv.className = 'label';
+				mercuryDiv.textContent = 'Mercury';
+				mercuryDiv.style.marginTop = '-1em';
+				var mercuryLabel = new THREE.CSS2DObject( mercuryDiv );
+				mercuryLabel.position.set( 0,0.5, 0 );
+				planet1.add( mercuryLabel );
+
+		var venusDiv = document.createElement( 'div' );
+				venusDiv.className = 'label';
+				venusDiv.textContent = 'Venus';
+				venusDiv.style.marginTop = '-1em';
+				var venusLabel = new THREE.CSS2DObject( venusDiv );
+				venusLabel.position.set( 0,2, 0 );
+				planet2.add( venusLabel );
+
+		var earthDiv = document.createElement( 'div' );
+				earthDiv.className = 'label';
+				earthDiv.textContent = 'Earth';
+				earthDiv.style.marginTop = '-1em';
+				var earthLabel = new THREE.CSS2DObject( earthDiv );
+				earthLabel.position.set( 0, 2, 0 );
+				planet3.add( earthLabel );
+
+		var moonDiv = document.createElement( 'div' );
+				moonDiv.className = 'label';
+				moonDiv.textContent = 'Moon';
+				moonDiv.style.marginTop = '-1em';
+				var moonLabel = new THREE.CSS2DObject( moonDiv );
+				moonLabel.position.set( 0,0.2, 0 );
+				moon.add( moonLabel );
+
+		var marsDiv = document.createElement( 'div' );
+				marsDiv.className = 'label';
+				marsDiv.textContent = 'Mars';
+				marsDiv.style.marginTop = '-1em';
+				var marsLabel = new THREE.CSS2DObject( marsDiv );
+				marsLabel.position.set( 0,2, 0 );
+				planet4.add( marsLabel );
+
+		var jupiterDiv = document.createElement( 'div' );
+				jupiterDiv.className = 'label';
+				jupiterDiv.textContent = 'Jupiter';
+				jupiterDiv.style.marginTop = '-1em';
+				var jupiterLabel = new THREE.CSS2DObject( jupiterDiv );
+				jupiterLabel.position.set( 0,6, 0 );
+				planet5.add( jupiterLabel );
+
+
+		var saturnDiv = document.createElement( 'div' );
+				saturnDiv.className = 'label';
+				saturnDiv.textContent = 'Saturn';
+				saturnDiv.style.marginTop = '-1em';
+				var saturnLabel = new THREE.CSS2DObject( saturnDiv );
+				saturnLabel.position.set( 0,4, 0 );
+				planet6.add( saturnLabel );
+
+		var uranusDiv = document.createElement( 'div' );
+				uranusDiv.className = 'label';
+				uranusDiv.textContent = 'Uranus';
+				uranusDiv.style.marginTop = '-1em';
+				var uranusLabel = new THREE.CSS2DObject( uranusDiv );
+				uranusLabel.position.set( 0,3, 0 );
+				planet7.add( uranusLabel );
+
+		var neptuneDiv = document.createElement( 'div' );
+				neptuneDiv.className = 'label';
+				neptuneDiv.textContent = 'Neptune';
+				neptuneDiv.style.marginTop = '-1em';
+				var neptuneLabel = new THREE.CSS2DObject( neptuneDiv );
+				neptuneLabel.position.set( 0,3, 0 );
+				planet8.add( neptuneLabel );
+
+
+
+		
+
+
+
+
+
+		//Controls options
+	
+
+
+
+
+
+		/* LIGHTS */
+
+				//sunlight
+				var sunlight = new THREE.PointLight( 0xffffff, 400, 400 );
+				sunlight.castShadow = true;       // default false
+				sunlight.position.set(0,0,0); 
+				scene.add( sunlight );
+
+
+				
+
+
+
+				//AmbientLight
+
+			var light = new THREE.AmbientLight( 0x404040,0.5 ); // soft white light
+			scene.add( light );
+
+
+
+
+		//particle https://codepen.io/vidark/pen/JNNPPJ https://aerotwist.com/tutorials/creating-particles-with-three-js/
+
+// first particles
+var particleCount = 4000,
+    particles = new THREE.Geometry(),
+    pMaterial = new THREE.ParticleBasicMaterial({
+      color: 0xFFFFFF,
+      size: 0.2
+    });
+for (var p = 0; p < particleCount; p++) {
+ var v =Math.random()*2*Math.PI;
+ var u =Math.random()*2*Math.PI;
+ var r =Math.random()*10;
+ var d =120-Math.random()*20;
+ var pX = 	(d + r*Math.cos(v))*Math.cos(u),									
+      pY = r*Math.sin(v),
+      pZ = (d + r*Math.cos(v))*Math.sin(u),
+      particle = new THREE.Vertex(pX, pY, pZ);
+  particles.vertices.push(particle);
+}
+particleSystem = new THREE.ParticleSystem(particles,pMaterial);
+particleSystem.position.y=-5;
+scene.add(particleSystem);
+
+
+
+//saturn ring http://planetpixelemporium.com/earth.html
+
+
+var ring_geometry = new THREE.RingGeometry( 4.5, 8, 64 ,  5, 0, Math.PI * 2);
+var ringtexture = new THREE.TextureLoader().load( 'img/saturn_ring.png' );
+var ringmaterial = new THREE.MeshBasicMaterial( { 
+	color: 0xffffff, 
+	side: THREE.DoubleSide, 
+  	size: 0.1,
+  	map: ringtexture,
+  blending: THREE.AdditiveBlending,
+  transparent: true
+} );
+
+var saturnring = new THREE.Mesh( ring_geometry, ringmaterial );
+saturnring.position.y=-2;
+
+scene.add( saturnring );
+
+
+
+
+
+
+
+
+
+
+
+/* RENDERER */
+    	renderer = new THREE.WebGLRenderer( { antialias: true } );
+		renderer.physicallyCorrectLights = true;
+		renderer.gammaInput = true;
+		renderer.gammaOutput = true;
+		renderer.shadowMap.enabled = true;
+		renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+		renderer.toneMapping = THREE.ReinhardToneMapping;
+		renderer.setPixelRatio( window.devicePixelRatio );
+		renderer.setSize( window.innerWidth, window.innerHeight );
+		document.body.appendChild( renderer.domElement );
+		container.appendChild( renderer.domElement );
+		renderer.autoClear = false;
+
+	labelRenderer = new THREE.CSS2DRenderer();
+				labelRenderer.setSize( window.innerWidth, window.innerHeight );
+				labelRenderer.domElement.style.position = 'absolute';
+				labelRenderer.domElement.style.top = 0;
+				document.body.appendChild( labelRenderer.domElement );
+
+
+var control = new THREE.OrbitControls( camera, labelRenderer.domElement );
+THREEx.WindowResize(renderer, camera);
+
+
+				var renderModel = new THREE.RenderPass( scene, camera );
+				var effectBloom = new THREE.BloomPass( 1.25 );
+				var effectFilm = new THREE.FilmPass( 0.35, 0.95, 2048, false );
+				composer = new THREE.EffectComposer( renderer );
+				composer.addPass( renderModel );
+				composer.addPass( effectBloom );
+				composer.addPass( effectFilm );
+
+
+		
+
+
+
+//animate
+var tempo=0.03;
+var tempo2=2;
+var t1=0;
+var t2=0;
+var t3=0;
+var t4=0;
+var t5=0;
+var t6=0;
+var t7=0;
+var t8=0;
+
+var rad1 =planet1.position.x;
+var rad2 =planet2.position.x;
+var rad3 =planet3.position.x;
+var rad4 =planet4.position.x;
+var rad5 =planet5.position.x;
+var rad6 =planet6.position.x;
+var rad7 =planet7.position.x;
+var rad8 =planet8.position.x;
+
+animate();
+function animate() {
+	requestAnimationFrame( animate );
+	render();
+	
+	renderer.render( scene, camera );
+	labelRenderer.render( scene, camera );
+
+
+
+
+t1+=tempo/rad1;
+
+t2+=tempo/rad2;
+
+t3+=tempo/rad3;
+
+t4+=tempo/rad4;
+
+t5+=tempo/rad5;
+
+t6+=tempo/rad6;
+
+t7+=tempo/rad7;
+
+t8+=tempo/rad8;
+
+
+planet1.position.x = Math.sin(t1*Math.PI*2)*rad1 ;
+planet1.position.z = Math.cos(t1*Math.PI*2)*rad1 ;
+
+
+planet2.position.x = Math.sin(t2*Math.PI*2)*rad2 ;
+planet2.position.z = Math.cos(t2*Math.PI*2)*rad2 ;
+  
+planet3.position.x = Math.sin(t3*Math.PI*2)*rad3 ;
+planet3.position.z = Math.cos(t3*Math.PI*2)*rad3 ;
+
+planet4.position.x = Math.sin(t4*Math.PI*2)*rad4 ;
+planet4.position.z = Math.cos(t4*Math.PI*2)*rad4 ;
+
+planet5.position.x = Math.sin(t5*Math.PI*2)*rad5 ;
+planet5.position.z = Math.cos(t5*Math.PI*2)*rad5 ;
+
+planet6.position.x = Math.sin(t6*Math.PI*2)*rad6 ;
+planet6.position.z = Math.cos(t6*Math.PI*2)*rad6 ;
+
+planet7.position.x = Math.sin(t7*Math.PI*2)*rad7 ;
+planet7.position.z = Math.cos(t7*Math.PI*2)*rad7 ;
+
+planet7.position.x = Math.sin(t7*Math.PI*2)*rad7 ;
+planet7.position.z = Math.cos(t7*Math.PI*2)*rad7 ;
+
+planet8.position.x = Math.sin(t8*Math.PI*2)*rad8 ;
+planet8.position.z = Math.cos(t8*Math.PI*2)*rad8 ;
+
+
+saturnring.position.x=Math.sin(t6*Math.PI*2)*rad6 ;
+saturnring.position.z=Math.cos(t6*Math.PI*2)*rad6 ;
+
+
+particleSystem.rotation.y+=tempo/100;
+
+planet1.rotation.y+=tempo2/rad1;
+planet2.rotation.y+=tempo2/rad2;
+planet3.rotation.y+=tempo2/rad3;
+planet4.rotation.y+=tempo2/rad4;
+planet5.rotation.y+=tempo2/rad5;
+planet6.rotation.y+=tempo2/rad6;
+planet7.rotation.y+=tempo2/rad7;
+planet8.rotation.y+=tempo2/rad8;
+
+
+
+moon.position.x = planet3.position.x + Math.sin(t1*Math.PI*2)*4 ;
+moon.position.z = planet3.position.z + Math.cos(t1*Math.PI*2)*4;
+moon.position.y = Math.sin(t1*(Math.PI/2))-1;
+
+
+
+}
+
+
+
+function render() {
+	renderer.toneMappingExposure = Math.pow( params.exposure, 5.0 ); // to allow for very bright scenes.
+	renderer.shadowMap.enabled = params.shadows;
+	var time = Date.now() * 0.0005;
+	renderer.render( scene, camera );
+	renderer.gammaInput = true;
+	renderer.gammaOutput = true;
+
+
+				var delta = 5 * clock.getDelta();
+
+				uniforms[ "time" ].value += 0.2 * delta;
+
+				renderer.clear();
+				
+				
+
+
+
+}
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+		</script>
+	</body>
+</html>
