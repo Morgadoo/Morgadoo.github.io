@@ -9,8 +9,51 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="jquery-3.3.1.min.js"></script>
-    <style>
+    <script type="text/javascript">
+    	
+$(document).ready(function(){
+  $("#_museus").click(
+  	function(){$("#subbar").slideToggle("slow");}
+  	//function(){$("#_museus").addClass("background-color", "#80002a");
 
+  	);
+
+});
+$(document).ready(function(){
+  $("#_live").click(function(){
+    $("#subbar").slideUp("slow");
+  });
+});
+$(document).ready(function(){
+  $("#_contactos").click(function(){
+    $("#subbar").slideUp("slow");
+  });
+});
+$(document).ready(function(){
+  $("#_galeria").click(function(){
+    $("#subbar").slideUp("slow");
+  });
+});
+$(document).ready(function(){
+  $("#_historia").click(function(){
+    $("#subbar").slideUp("slow");
+  });
+});
+
+
+//icon
+$(document).ready(function(){
+  $("#icon").click(function(){
+    $(".icon_sub1").slideToggle("slow");
+    $("#subbar").slideUp("slow");
+  });
+});
+
+
+
+    </script>
+    <style>
+ 
 
 
 
@@ -24,22 +67,24 @@
     height:70px;
     background-color:#3B3131;
 	color:#E2E2E2;
-	font-size: 40px;
 	font-family: Arial;
 }
 
   .navbar {
   	
+  margin: auto;
   overflow: hidden;
   background-color: #3B3131;
-  font-size: 20px;
+  font-weight: bold;
+  font-size: 25px;
   font-family: Arial;
 }
 
 /* Style the navigation bar links */
 .navbar a {
-  float: left;
   display: block;
+  float: left;
+  background-color: #3B3131; 
   color: #E2E2E2;
   text-align: center;
   padding: 1% 2%;
@@ -52,17 +97,22 @@
 /* Right-aligned link */
 .navbar a.right {
   float: right;
-  border-left:2px solid #E2E2E2;
+  border-left:4px solid #E2E2E2;
+  transition: 0.5s;
   
 }
 
 
 .navbar a.center {
   background-color: #3B3131;
+  position: relative;
+  margin-left: 40px;
   color: #E2E2E2;
+  font-weight: bold;
   font-size: 25px;
   font-weight: bold;
-  padding: 0.63% 2%;
+  font-family: Arial;
+  padding: 1% 2%;
   float: center;
   
 
@@ -72,128 +122,118 @@
   color: #E2E2E2;
   font-size: 25px;
   font-weight: bold;
-  padding: 0.63% 2%;
- 
+  font-family: Arial;
+  padding: 1% 2%;
   float: center;
 
 }
 
 /* Change color on hover */
-.navbar a:hover {
+.navbar a.right:hover {
   background-color: #E2E2E2;
   color: #3B3131;
+  transition: 0.5s;
 }
 
-@media screen and (max-width:716px) {
-  a.center{
-    width:97%; 
-    text-align: center;
-    
-  }
-  .right {
-  width:100%;
-  float: center;
-  text-align: center;
-  border-top: 1px solid #E2E2E2;
-  }
 
-}
-.active {
+/* janela pequena */
+@media screen and (max-width:900px) {
+	.icon_sub1 .active a{
   background-color: #80002a;
 }
+  a.center{
+    width:50%; 
+    text-align: left;
+    
+  }
+  a.right {
+  	display:none;
+  }
 
-.subbar {
-	width:50%;
-	height:160px;
-	background-color:#80002a;
+  #icon{
+  	display: block; 
+  	float: right;
+  	 
+  	position: relative;
+  	margin-right: 20px;
+  	margin-top: 8px;
+  	color: #E2E2E2;
+  }
+
+  .icon_sub1 a{
+  display: block; 
+ 
+  float: right;
+  background-color: #3B3131; 
+  color: #E2E2E2;
+  text-align: center;
+  padding: 5px 2%;
+  width: 100px;
+  height: 20px;
+ 
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: Arial;
+
+}
+.navbar a.center {
+	margin-top:4px;
+	margin-left: 30%; 
+}
+.home{
+position: relative;
+
+}
+
+}
+
+
+
+
+
+
+
+
+.navbar a.right +.active {
+  background-color: #80002a;
+  transition: 0.5s;
+}
+
+.navbar a.right + .active:hover {
+  background-color: #E2E2E2;
+  transition: 0.5s;
+  color: #3B3131;
+}
+#subbar{
+	display: block; 
 	position: relative;
-	left: 50%;
+	margin-top:5px;
+	float: right;
+ 	border-left:4px solid #E2E2E2;
+	height:160px;
+	font-weight: bold;
+  font-size: 18px;
+  font-family: Arial;
+  padding: 1% 2%;
+  background-color: #3B3131; 
+  color: #E2E2E2;
+
+}
+@media screen and (min-width:900px) {
+#icon{display: none;  };
+.icon_sub1 a{display: none;};
+}
+.home{
+position: relative;
+
+
 
 }
 
 	</style>
 
-	<script>  
-
-$(document).ready(function(){
-    $("#_historia").click(function(){
-    	
-        $("#_0historia").animate({height: 'toggle'},600);
-    });
-
-});
-
-$(document).ready(function(){
-    $("#_galeria").click(function(){
-    	
-        $("#_0galeria").animate({height: 'toggle'},600);
-
-    });
-
-    
-});
-
-$(document).ready(function(){
-    $("#_contactos").click(function(){
-    	
-        $("#_0contactos").animate({height: 'toggle'},600);
-    });
-});
-
-$(document).ready(function(){
-    $("#_live").click(function(){
-    	
-        $("#_0live").animate({height: 'toggle'},600);
-    });
-});
-
-$(document).ready(function(){
-    $("#_museus").click(function(){
-
-        $("#_0museus").animate({height: 'toggle'},600);
-    });
-});
-
-
-
-
-
-
-
-/*$(".right").click(function(){
-        $(".subbar").slideUp(600).slideDown(600);
-    });*/
-
-
-/*$(document).ready(function(){
-    $("#_historia.subbar").mouseenter(function(){
-    	$("#_0historia").show();
-    	});
-    $("#_historia, .subbar").mouseleave(function(){
-    	$("#_0historia").hide();
-    	});
-    });
-
-$(document).ready(function(){
-    $("#_galeria, .subbar").mouseenter(function(){
-    	$("#_0galeria").show();
-    	});
-     $("#_galeria,.subbar").mouseleave(function(){
-    	$("#_0galeria").hide();
-    	});
-});*/
-
-
-/*$(document).ready(function(){
-    $(".right").click(function(){
-        $(".subbar").css("color", "red").slideUp(600).slideDown(600);
-
-    });
-}); */
-
-
-
-</script>
+	
   </head>
 
 
@@ -201,32 +241,66 @@ $(document).ready(function(){
 
   <body>
 
-	<div class="navbar" id="myDIV">
+	<div class="navbar" id="myDIVmenu">
 
 
-  <a href="#" class="center">Teste</a> <!-- Lagar Do Avô -->
+  <a href="#" class="center">Lagar Do Avô</a>
   
-  <a href="#" class="right active" id="_museus">Museus</a>
+  <a href="#" class="right" id="_museus">Museus</a>
   <a href="#" class="right" id="_live">Live</a>
   <a href="#" class="right" id="_contactos">Contactos</a>
   <a href="#" class="right" id="_galeria">Galeria</a>
-  <a href="#" class="right" id="_historia">História</a>
+  <a href="#" class="right active" id="_historia">História</a>
+  <div id="icon" ><img src="menu-button2.svg" width="30" height="30">
+	</div>
 
 	</div>
 
-	<script id="_0museus" class="subbar">Museus</script>
-	<script id="_0live" class="subbar">Live</script>
-	<script id="_0contactos" class="subbar">Contactos</script>
-	<script id="_0galeria" class="subbar">Galeria</script>
-	<script id="_0historia" class="subbar">Historia</script>
+<div id="subbar" style="display: none">
+	<a>Museu do Douro</a><hr>
+	<a>Museu Casa Grande</a><hr>
+	<a>Museu do Vale do Côa</a>
+	</div>
+
+<div id="icon_sub" class="icon_sub1" style="display: none"> 
+  <p><a href="#"  class="icon_bar" id="_museus">Museus</a><br>
+  <p><a href="#" class="icon_bar" id="_live">Live</a><br>
+  <p><a href="#" class="icon_bar active" id="_contactos">Contactos</a><br>
+  <p><a href="#" class="icon_bar" id="_galeria">Galeria</a><br>
+  <p><a href="#" class="icon_bar" id="_historia">História</a><br>
+
+
+
+
+
+
+
+
+
+</div>
 
 	<script>
 // Button
-var header = document.getElementById("myDIV");
-var btns = header.getElementsByClassName("right");
+var header1 = document.getElementById("myDIVmenu");
+var btns1 = header1.getElementsByClassName("right");
 
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
+
+for (var i = 0; i < btns1.length ; i++) {
+  btns1[i].addEventListener("click", function() {
+  		var current = document.getElementsByClassName("active");
+  		current[0].className = current[0].className.replace(" active", "");
+  		this.className += " active";
+  	});
+}
+//end button
+
+// Button submenu
+var header2 = document.getElementById("icon_sub");
+var btns2 = header2.getElementsByClassName("icon_bar");
+
+
+for (var i = 0; i < btns2.length ; i++) {
+  btns2[i].addEventListener("click", function() {
   		var current = document.getElementsByClassName("active");
   		current[0].className = current[0].className.replace(" active", "");
   		this.className += " active";
@@ -235,9 +309,8 @@ for (var i = 0; i < btns.length; i++) {
 //end button
 </script>
 
-
+<div class="home">
   	<h2>Site em Desenvolvimento</h2>
-  
+</div>
 
-  
 </body></html>
