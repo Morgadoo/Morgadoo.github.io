@@ -62,7 +62,7 @@ $(document).ready(function(){
 
 
   	#painel {
-    
+    display: block;
     width:100%;
     height:70px;
     background-color:#3B3131;
@@ -71,18 +71,20 @@ $(document).ready(function(){
 }
 
   .navbar {
-  	
+display: block;
   margin: auto;
   overflow: hidden;
-  background-color: #3B3131;
+  background-color: #E2E2E2;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
   font-family: Arial;
 }
 
+
 /* Style the navigation bar links */
 .navbar a {
-  display: block;
+border-radius: 4px;
+display: block;
   float: left;
   color: #E2E2E2;
   text-align: center;
@@ -97,7 +99,7 @@ $(document).ready(function(){
 .navbar a.right {
   background-color: #3B3131; 
   float: right;
-  border-left:4px solid #E2E2E2;
+  margin-left:4px;
   transition: 0.5s;
   
 }
@@ -120,35 +122,27 @@ $(document).ready(function(){
 }
 
 .navbar a.center {
-  background-color: #3B3131;
-  position: relative;
-  margin-left: 5%;
-  color: #E2E2E2;
-  font-weight: bold;
-  font-size: 25px;
+  background-color: #E2E2E2; 
+  font-size: 30px;
+  color: #3B3131;
   font-weight: bold;
   font-family: Arial;
-  padding: 1% 2%;
-  float: center;
-  
+  float: left;
+
 
 }
 .navbar a.center:hover {
   background-color: #3B3131; 
   color: #E2E2E2;
-  font-size: 25px;
   font-weight: bold;
   font-family: Arial;
-  padding: 1% 2%;
-  float: center;
-
+ 
 }
 
 
 
-
 /* janela pequena */
-@media screen and (max-width:900px) {
+@media screen and (max-width:970px) {
 	.icon_sub1 .active a{
   background-color: #80002a;
 }
@@ -167,12 +161,13 @@ $(document).ready(function(){
   	 
   	position: relative;
   	margin-right: 20px;
-  	margin-top: 8px;
+  	margin-top: 1%;
   	color: #E2E2E2;
   }
 
   #icon_sub a.icon_bar{
   display: block; 
+  border-radius: 4px;
   transition: 0.5s;
   position: relative;
   float: right;
@@ -209,7 +204,7 @@ background-color: #E2E2E2;
 }
 
 .navbar a.center {
-	margin-top:4px;
+	margin-top:0.4%;
 	margin-left: 20%; 
 }
 .home{
@@ -260,7 +255,7 @@ background-color: #E2E2E2;
 */
 
 
-@media screen and (min-width:900px) {
+@media screen and (min-width:970px) {
 #icon{display: none;  };
 #icon_sub +.icon_sub1 {display: none;};
 }
@@ -288,13 +283,16 @@ position: relative;
 	<div class="navbar" id="myDIVmenu">
 
 
-  <a href="#" class="center active">Lagar Do Avô</a>
+  
   
   <a href="#" class="right" id="_museus">Rede de Museus</a>
   <a href="#" class="right" id="_live">Live</a>
   <a href="#" class="right" id="_contactos">Contactos</a>
   <a href="#" class="right" id="_galeria">Galeria</a>
   <a href="#" class="right" id="_historia">História</a>
+
+  <a href="#" class="center active">Lagar Do Avô</a>
+
   <div id="icon" ><img src="menu-button2.svg" width="30" height="30"></div>
 </div>
 
@@ -326,7 +324,7 @@ for (var i = 0; i < btns1.length ; i++) {
 }
 //end button
 
-// Button museus
+// Button icon
 var header2 = document.getElementById("icon_sub");
 var btns2 = header2.getElementsByClassName("icon_bar");
 
@@ -338,7 +336,7 @@ for (var i = 0; i < btns2.length ; i++) {
   		this.className += " active";
   	});
 }
-//end button museus
+//end button icon
 
 </script>
 
