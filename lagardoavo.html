@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
-    	
+    
 
 //load page animate
 
@@ -62,7 +62,12 @@ $(document).ready(function(){
 
 
 
+
     </script>
+
+
+
+
     <style>
  
 
@@ -220,6 +225,7 @@ background-color: #E2E2E2;
 }
 .home{
 position: absolute;
+
 z-index: -1;
 top:60px;
 
@@ -276,12 +282,24 @@ background-color: #E2E2E2;
 
 .home{
 position: absolute;
+
+border-radius: 20px;
 z-index: -1;
-top:150px;
+top:200px;
+width: 98%;
+height: 70%;
 
 
 
 }
+
+ #panorama {
+  border-radius: 50%;
+  position: relative;
+  width: 100%;
+  float: center;
+    }
+
 
 	</style>
 
@@ -354,6 +372,12 @@ for (var i = 0; i < btns2.length ; i++) {
 
 <div class="home" style="opacity: 0">
   	<h2>Site em Desenvolvimento</h2>
+
+<div id="panorama">
+         <img src="demo_photo.jpg">
+     </div>
 </div>
+
+
 
 </body></html>
