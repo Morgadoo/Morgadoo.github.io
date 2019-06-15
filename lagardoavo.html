@@ -11,12 +11,21 @@
     <script src="jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
     	
+
+//load page animate
+
+$(function() {
+  $(".navbar").animate({opacity: '1'},"slow");
+  $(".home").animate({opacity: '1'},"slow");
+  $(".icon_sub1").animate({opacity: '1'},"slow");
+});
+
+
 $(document).ready(function(){
   $("#_museus").click(
-  	function(){$("#subbar").slideToggle("slow");}
-  	//function(){$("#_museus").addClass("background-color", "#80002a");
+    function(){$("#subbar").slideToggle("slow");}
+    );
 
-  	);
 
 });
 $(document).ready(function(){
@@ -43,9 +52,11 @@ $(document).ready(function(){
 
 //icon
 $(document).ready(function(){
-  $("#icon").click(function(){
-    $(".icon_sub1").slideToggle("slow");
-    $("#subbar").slideUp("slow");
+  $("#icon").on('click', function () {
+    $('.icon_sub1').animate({
+  height: "toggle",
+  opacity: "toggle"
+    });
   });
 });
 
@@ -71,14 +82,14 @@ $(document).ready(function(){
 
   .navbar {
 display: block;
-border-radius: 8px;
+border-radius: 20px;
   margin: auto;
   position: relative;
   overflow: hidden;
-  padding: 45px 2%;
+  padding: 50px 2%;
   background-color: #bfbfbf;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 1vw;
   font-family: Manjari;
 }
 
@@ -155,13 +166,10 @@ display: block;
   #icon{
   	position: relative;
   	display: block; 
+    float: right;
   	border-radius: 8px;
   	background-color: #E2E2E2;
-  	float: right;
-  	padding-top:1.5%;
-  	padding-right: 1%;
-  	padding-left:1%;
-  	padding-bottom:0%;
+  	padding:6px;
   	margin-right: 20px;
   	color: #E2E2E2;
   }
@@ -170,7 +178,6 @@ display: block;
   display: block; 
   border-radius: 4px;
   transition: 0.5s;
-  position: relative;
   float: right;
   background-color: #3B3131; 
   color: #E2E2E2;
@@ -209,8 +216,9 @@ background-color: #E2E2E2;
 	
 }
 .home{
- position: relative;
-
+position: absolute;
+z-index: -1;
+top:60px;
 
 }
 
@@ -264,8 +272,9 @@ background-color: #E2E2E2;
 
 
 .home{
-position: relative;
-
+position: absolute;
+z-index: -1;
+top:150px;
 
 
 
@@ -281,7 +290,7 @@ position: relative;
 
   <body>
 
-	<div class="navbar" id="myDIVmenu">
+	<div class="navbar" id="myDIVmenu" style="opacity: 0">
 
 
   
@@ -292,14 +301,13 @@ position: relative;
   <a href="#" class="right" id="_galeria">Galeria</a>
   <a href="#" class="right" id="_historia">História</a>
 
-  <div class="logo" ><img src="logofinal2.png" width=190px ></div>
+  <div class="logo active" ><img src="logofinal2.png" width=190px ></div>
 
   <div id="icon" ><img src="menu-button2.svg" width=40px></div>
 </div>
 
 
-
-<div id="icon_sub" class="icon_sub1" style="display: none"> 
+<div id="icon_sub" class="icon_sub1" style="display: none; opacity: 0"> 
   <p style="margin-bottom: 2em;"><a href="#" class="icon_bar" id="_historia">História</a><br>
   <p style="margin-bottom: 2em;"><a href="#" class="icon_bar" id="_galeria">Galeria</a><br>
   <p style="margin-bottom: 2em;"><a href="#" class="icon_bar" id="_contactos">Contactos</a><br>
@@ -341,7 +349,7 @@ for (var i = 0; i < btns2.length ; i++) {
 
 </script>
 
-<div class="home" style="z-index: 1">
+<div class="home" style="opacity: 0">
   	<h2>Site em Desenvolvimento</h2>
 </div>
 
