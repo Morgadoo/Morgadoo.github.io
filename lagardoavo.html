@@ -64,20 +64,22 @@ $(document).ready(function(){
   	#painel {
     display: block;
     width:100%;
-    height:70px;
-    background-color:#3B3131;
+    background-color:#3B4131;
 	color:#E2E2E2;
-	font-family: Arial;
+	font-family: Manjari;
 }
 
   .navbar {
 display: block;
+border-radius: 8px;
   margin: auto;
+  position: relative;
   overflow: hidden;
-  background-color: #E2E2E2;
+  padding: 45px 2%;
+  background-color: #bfbfbf;
   font-weight: bold;
-  font-size: 20px;
-  font-family: Arial;
+  font-size: 24px;
+  font-family: Manjari;
 }
 
 
@@ -85,7 +87,7 @@ display: block;
 .navbar a {
 border-radius: 4px;
 display: block;
-  float: left;
+  float: right;
   color: #E2E2E2;
   text-align: center;
   padding: 1% 2%;
@@ -98,8 +100,10 @@ display: block;
 /* Right-aligned link */
 .navbar a.right {
   background-color: #3B3131; 
-  float: right;
-  margin-left:4px;
+  margin-left:8px;
+  padding-top:1%;
+  padding-bottom:0.5%;
+  text-align: center;
   transition: 0.5s;
   
 }
@@ -121,33 +125,26 @@ display: block;
   color: #3B3131;
 }
 
-.navbar a.center {
-  background-color: #E2E2E2; 
-  font-size: 30px;
-  color: #3B3131;
-  font-weight: bold;
-  font-family: Arial;
-  float: left;
+.navbar .logo {
+  
+ position: absolute;
+ top:3%;
+
+ margin-left: 15%; 
 
 
 }
-.navbar a.center:hover {
-  background-color: #3B3131; 
-  color: #E2E2E2;
-  font-weight: bold;
-  font-family: Arial;
- 
-}
+
 
 
 
 /* janela pequena */
-@media screen and (max-width:970px) {
+@media screen and (max-width:1601px) {
 	.icon_sub1 .active a{
   background-color: #80002a;
 }
-  a.center{
-    width:50%; 
+  .logo{
+    width:20px; 
     text-align: left;
     
   }
@@ -156,12 +153,16 @@ display: block;
   }
 
   #icon{
-  	display: block; 
-  	float: right;
-  	 
   	position: relative;
+  	display: block; 
+  	border-radius: 8px;
+  	background-color: #E2E2E2;
+  	float: right;
+  	padding-top:1.5%;
+  	padding-right: 1%;
+  	padding-left:1%;
+  	padding-bottom:0%;
   	margin-right: 20px;
-  	margin-top: 1%;
   	color: #E2E2E2;
   }
 
@@ -255,7 +256,7 @@ background-color: #E2E2E2;
 */
 
 
-@media screen and (min-width:970px) {
+@media screen and (min-width:1600px) {
 #icon{display: none;  };
 #icon_sub +.icon_sub1 {display: none;};
 }
@@ -291,9 +292,9 @@ position: relative;
   <a href="#" class="right" id="_galeria">Galeria</a>
   <a href="#" class="right" id="_historia">História</a>
 
-  <a href="#" class="center active">Lagar Do Avô</a>
+  <div class="logo" ><img src="logofinal2.png" width=190px ></div>
 
-  <div id="icon" ><img src="menu-button2.svg" width="30" height="30"></div>
+  <div id="icon" ><img src="menu-button2.svg" width=40px></div>
 </div>
 
 
