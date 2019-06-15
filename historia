@@ -358,7 +358,7 @@ margin-left: 8px;
   <a href="galeria" class="right" id="_galeria">Galeria</a>
   <a href="historia" class="right active" id="_historia">História</a>
 
-  <div class="logo" ><a href="index"><img src="img/logofinal2.png" width=190px ></div>
+  <div class="logo" ><a href="index.html"><img src="img/logofinal2.png" width=190px ></div>
 
   <a href="#"><div id="icon" ><img src="img/menu-button2.svg" width=40px></div></a>
 </div>
