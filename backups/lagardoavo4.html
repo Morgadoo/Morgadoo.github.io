@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+<html lang="pt-pt">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Lagar Do Avô</title>
+ <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+    	
+$(document).ready(function(){
+  $("#_museus").click(
+  	function(){$("#subbar").slideToggle("slow");}
+  	//function(){$("#_museus").addClass("background-color", "#80002a");
+
+  	);
+
+});
+$(document).ready(function(){
+  $("#_live").click(function(){
+    $("#subbar").slideUp("slow");
+  });
+});
+$(document).ready(function(){
+  $("#_contactos").click(function(){
+    $("#subbar").slideUp("slow");
+  });
+});
+$(document).ready(function(){
+  $("#_galeria").click(function(){
+    $("#subbar").slideUp("slow");
+  });
+});
+$(document).ready(function(){
+  $("#_historia").click(function(){
+    $("#subbar").slideUp("slow");
+  });
+});
+
+
+//icon
+$(document).ready(function(){
+  $("#icon").click(function(){
+    $(".icon_sub1").slideToggle("slow");
+    $("#subbar").slideUp("slow");
+  });
+});
+
+
+
+    </script>
+    <style>
+ 
+
+
+
+	body {
+  	background-color: #E2E2E2;}
+
+
+  	#painel {
+    
+    width:100%;
+    height:70px;
+    background-color:#3B3131;
+	color:#E2E2E2;
+	font-family: Arial;
+}
+
+  .navbar {
+  margin: auto;
+  overflow: hidden;
+  background-color: #3B3131;
+  font-weight: bold;
+  font-size: 24px;
+  font-family: Arial;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+
+  display: block;
+  float: left;
+  color: #E2E2E2;
+  text-align: center;
+  padding: 1% 2%;
+  text-decoration: none;
+
+}
+
+
+
+/* Right-aligned link */
+.navbar a.right {
+  background-color: #3B3131; 
+  float: right;
+  border-left:4px solid #E2E2E2;
+  transition: 0.5s;
+  
+}
+
+.navbar a.right:hover {
+  background-color: #E2E2E2;
+  color: #3B3131;
+  transition: 0.5s;
+}
+
+.navbar a.active {
+  background-color: #80002a;
+  transition: 0.5s;
+}
+
+.navbar a.right + .active:hover {
+  background-color: #E2E2E2;
+  transition: 0.5s;
+  color: #3B3131;
+}
+
+.navbar a.center {
+  background-color: #3B3131;
+  position: relative;
+  margin-left: 2%;
+  color: #E2E2E2;
+  font-weight: bold;
+  font-weight: bold;
+  font-family: Arial;
+  padding: 1% 2%;
+  float: center;
+  
+
+}
+.navbar a.center:hover {
+  background-color: #3B3131; 
+  color: #E2E2E2;
+  
+  font-weight: bold;
+  font-family: Arial;
+  padding: 1% 2%;
+  float: center;
+
+}
+
+
+
+
+/* janela pequena */
+@media screen and (max-width:970px) {
+	.icon_sub1 .active a{
+  background-color: #80002a;
+}
+  a.center{
+    width:50%; 
+    text-align: left;
+    
+  }
+  a.right {
+  	display:none;
+  }
+
+  #icon{
+  	display: block; 
+  	float: right;
+  	 
+  	position: relative;
+  	margin-right: 20px;
+  	margin-top: 1%;
+  	color: #E2E2E2;
+  }
+
+  #icon_sub a.icon_bar{
+  display: block; 
+  transition: 0.5s;
+  position: relative;
+  float: right;
+  background-color: #3B3131; 
+  color: #E2E2E2;
+  text-align: center;
+  padding: 10px 5px;
+  width: 180px;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: Arial;
+
+}
+
+#icon_sub a.icon_bar:hover{
+
+background-color: #E2E2E2;
+  transition: 0.5s;
+  color: #3B3131;
+
+
+}
+#icon_sub  a.active{
+  background-color: #80002a;
+  transition: 0.5s;
+}
+#icon_sub a.icon_bar +.active:hover{
+
+background-color: #E2E2E2;
+  transition: 0.5s;
+  color: #3B3131;
+
+
+}
+
+.navbar a.center {
+	margin-top:0.4%;
+	margin-left: 20%; 
+}
+.home{
+ position: relative;
+
+
+}
+
+}
+
+/*fim janela pequena*/
+/* 
+#subbar a._subbar{
+	display: block; 
+	transition: 0.5s;
+	position: relative;
+  float: right;
+ 	border-left:4px solid #E2E2E2;
+	text-align: center;
+  font-size: 20px;
+  font-family: Arial;
+  padding: 10px 0px;
+  width: 200px;
+  background-color: #3B3131; 
+  color: #E2E2E2;
+
+}
+#subbar a._subbar:hover{
+
+background-color: #E2E2E2;
+  transition: 0.5s;
+  color: #3B3131;
+
+
+}
+#subbar a.active{
+  background-color: #80002a;
+  transition: 0.5s;
+}
+#subbar a._subbar +.active:hover{
+
+background-color: #E2E2E2;
+  transition: 0.5s;
+  color: #3B3131;
+
+
+}
+*/
+
+
+@media screen and (min-width:970px) {
+#icon{display: none;  };
+#icon_sub +.icon_sub1 {display: none;};
+}
+
+
+
+.home{
+position: relative;
+
+
+
+
+}
+
+	</style>
+
+	
+  </head>
+
+
+
+
+  <body>
+
+	<div class="navbar" id="myDIVmenu">
+
+
+  <a href="#" class="center active">Lagar Do Avô</a>
+  
+  <a href="#" class="right" id="_museus">Rede de Museus</a>
+  <a href="#" class="right" id="_live">Live</a>
+  <a href="#" class="right" id="_contactos">Contactos</a>
+  <a href="#" class="right" id="_galeria">Galeria</a>
+  <a href="#" class="right" id="_historia">História</a>
+  <div id="icon" ><img src="menu-button2.svg" width="30" height="30"></div>
+</div>
+
+
+
+<div id="icon_sub" class="icon_sub1" style="display: none"> 
+  <p style="margin-bottom: 2em;"><a href="#" class="icon_bar" id="_historia">História</a><br>
+  <p style="margin-bottom: 2em;"><a href="#" class="icon_bar" id="_galeria">Galeria</a><br>
+  <p style="margin-bottom: 2em;"><a href="#" class="icon_bar" id="_contactos">Contactos</a><br>
+  <p style="margin-bottom: 2em;"><a href="#" class="icon_bar" id="_live">Live</a><br>
+  	<p style="margin-bottom: 2em;"><a href="#"  class="icon_bar" id="_museus">Rede de Museus</a><br>
+
+
+
+</div>
+
+	<script>
+// Button
+var header1 = document.getElementById("myDIVmenu");
+var btns1 = header1.getElementsByClassName("right");
+
+
+for (var i = 0; i < btns1.length ; i++) {
+  btns1[i].addEventListener("click", function() {
+  		var current = document.getElementsByClassName("active");
+  		current[0].className = current[0].className.replace(" active", "");
+  		this.className += " active";
+  	});
+}
+//end button
+
+// Button museus
+var header2 = document.getElementById("icon_sub");
+var btns2 = header2.getElementsByClassName("icon_bar");
+
+
+for (var i = 0; i < btns2.length ; i++) {
+  btns2[i].addEventListener("click", function() {
+  		var current = document.getElementsByClassName("active");
+  		current[0].className = current[0].className.replace(" active", "");
+  		this.className += " active";
+  	});
+}
+//end button museus
+
+</script>
+
+<div class="home" style="z-index: 1">
+  	<h2>Site em Desenvolvimento</h2>
+</div>
+
+</body></html>

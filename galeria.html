@@ -9,350 +9,29 @@
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="js/jquery-3.3.1.min.js"></script>
-    <script type="text/javascript">
-    
-
-//load page animate
-
-$(function() {
-  
-  $(".home").animate({opacity: '1'},1500);
-  
-});
+    <script src="src/myscripts.js"></script>
+    <script src="src/jquery.magnific-popup.js"></script>
 
 
-$(document).ready(function(){
-  $("#_museus").click(
-    function(){$("#subbar").slideToggle("slow");}
-    );
-
-
-});
-$(document).ready(function(){
-  $("#_live").click(function(){
-    $("#subbar").slideUp("slow");
-  });
-});
-$(document).ready(function(){
-  $("#_contactos").click(function(){
-    $("#subbar").slideUp("slow");
-  });
-});
-$(document).ready(function(){
-  $("#_galeria").click(function(){
-    $("#subbar").slideUp("slow");
-  });
-});
-$(document).ready(function(){
-  $("#_historia").click(function(){
-    $("#subbar").slideUp("slow");
-  });
-});
-
-
-//icon
-$(document).ready(function(){
-  $("#icon").on('click', function () {
-    $('.icon_sub1').animate({
-  height: "toggle",
-  opacity: "toggle"
-    });
-  });
-});
-
-
-
-
-    </script>
-
-
-
-
-    <style>
- 
-@font-face {
-   font-family: Manjari;
-   src: url(fonts/Manjari-Regular.otf);
-}
-@font-face {
-   font-family: Manjari;
-   src: url(fonts/Manjari-Bold.otf);
-   font-weight: bold;
-}
-@font-face {
-   font-family: Manjari;
-   src: url(fonts/Manjari-Thin.otf);
-   font-weight: thin;
-}
-
-
-	body {
-  	background-color: #E2E2E2;}
-
-
-  	#painel {
-    display: block;
-    width:100%;
-    background-color:#3B4131;
-	color:#E2E2E2;
-	font-family: Manjari;
-}
-
-  div.navbar {
-  	position: -webkit-sticky;
-  position: sticky;
-  z-index: 2;
-  top: 0;
-display: block;
-border-radius: 20px;
-  margin: auto;
-  overflow: hidden;
-  padding: 50px 1%;
-  margin-right: 8px;
-  margin-left: 8px;
-  background-color: #bfbfbf;
-  font-weight: bold;
-  font-size: 1.2vw;
-  font-family: Manjari;
-}
-
-
-/* Style the navigation bar links */
-.navbar a {
-border-radius: 8px;
-display: block;
-  float: right;
-  color: #E2E2E2;
-  text-align: center;
-  padding: 1% 2%;
-  text-decoration: none;
-
-}
-
-
-
-/* Right-aligned link */
-.navbar a.right {
-  background-color: #3B3131; 
-  margin-left:8px;
-  padding-top:1%;
-  padding-bottom:0.5%;
-  text-align: center;
-  transition: 0.5s;
-  
-}
-
-.navbar a.right:hover {
-  background-color: #E2E2E2;
-  color: #3B3131;
-  transition: 0.5s;
-}
-
-.navbar  a.active {
-  background-color: #80002a;
-  transition: 0.5s;
-}
-
-.navbar a + .right .active:hover {
-  background-color: #E2E2E2;
-  transition: 0.5s;
-  color: #3B3131;
-}
-
-.navbar .logo {
-  
- position: absolute;
- top:5%;
-
- margin-left: 15%; 
-
-
-}
-
-
-
-
-
-/* janela pequena */
-@media screen and (max-width:1571px) {
-	.icon_sub1 .active a{
-  background-color: #80002a;
-}
-  .logo{
-  	position: relative;
-	margin-left: 15%;     
-  }
-  a.right {
-  	display:none;
-  }
-
-  #icon{
-  	position: relative;
-  	display: block; 
-    float: right;
-  	border-radius: 8px;
-  	background-color: #bfbfbf;
-  	padding:6px;
-  	position-right: 20px;
-  	color: #E2E2E2;
-  }
+    <link rel="stylesheet" href="css/magnific-popup.css">
    
-   #icon:hover{
-
-  background-color: #80002a;
-
-   }                
-
-#icon_sub{
-display: block;
-  margin: auto;
-  float: center;
-  position: absolute;
-  z-index: 2;
-  right: 5%;
-  top:25%;
-  overflow: hidden;
- 
-  
-
-}
 
 
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/stylesgallery.css">
+<script type="text/javascript">
 
 
-  #icon_sub a.icon_bar{
-  display: block; 
-  overflow: hidden;
-  border-radius: 8px;
-  transition: 0.5s;
-  float: right;  /* float: right;   */
-  margin-top: 10px;
-  margin-left:8px;
-  margin-right: 8px;
-  width: 180px;
-  background-color: #3B3131; 
-  color: #E2E2E2;
-  text-align: center; 
-  padding: 1% 2%;
-  padding-top:8px;
-  padding-bottom:5px;
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: bold;
-  font-family: Manjari;
-
-}
-
-#icon_sub a.icon_bar:hover{
-
-background-color: #E2E2E2;
-  transition: 0.5s;
-  color: #3B3131;
+  $(document).ready(function() {
+  $('.test-popup-link').magnificPopup({
+  type: 'image'
+  // other options
+});
 
 
-}
-#icon_sub  a.active{
-  background-color: #80002a;
-  transition: 0.5s;
-}
-#icon_sub a.icon_bar +.active:hover{
+</script>
+   
 
-background-color: #E2E2E2;
-  transition: 0.5s;
-  color: #3B3131;
-
-
-}
-
-
-.home{
-  
-overflow: hidden;
-top:0px;
-
-
-
-}
-
-}
-
-/*fim janela pequena*/
-/* 
-#subbar a._subbar{
-	display: block; 
-	transition: 0.5s;
-	position: relative;
-  float: right;
- 	border-left:4px solid #E2E2E2;
-	text-align: center;
-  font-size: 20px;
-  font-family: Arial;
-  padding: 10px 0px;
-  width: 200px;
-  background-color: #3B3131; 
-  color: #E2E2E2;
-
-}
-#subbar a._subbar:hover{
-
-background-color: #E2E2E2;
-  transition: 0.5s;
-  color: #3B3131;
-
-
-}
-#subbar a.active{
-  background-color: #80002a;
-  transition: 0.5s;
-}
-#subbar a._subbar +.active:hover{
-
-background-color: #E2E2E2;
-  transition: 0.5s;
-  color: #3B3131;
-
-
-}
-*/
-
-
-@media screen and (min-width:1570px) {
-#icon{display: none;  };
-#icon_sub .icon_bar {display: none;};
-}
-
-
-
-.home{
-display: block;
-margin: auto;
-overflow: hidden;
-border-radius: 20px;
-margin-right: 8px;
-margin-left: 8px;
-  position: relative;
-  overflow: hidden;
-  text-align: center;
-  top:10px;
-  height: 754px;
-  /*background-color: #bfbfbf;*/
-  font-size: 1.2vw;
-  font-family: Manjari;
-}
-
-
-
- #panorama {
-  border-radius: 50%;
-  position: relative;
-  width: 100%;
-  float: center;
-    }
-
-
-	</style>
-
-	
   </head>
 
 
@@ -371,7 +50,7 @@ margin-left: 8px;
   <a href="galeria.html" class="right active" id="_galeria">Galeria</a>
   <a href="historia.html" class="right" id="_historia">História</a>
 
-  <div class="logo" ><a href="index.html"><img src="img/logofinal2.png" width=190px ></div>
+  <div class="logo" ><a href="index.html"><img src="img/logofinal2.png" width=180px ></div>
 
   <a href="#"><div id="icon" ><img src="img/menu-button2.svg" width=40px></div></a>
 </div>
@@ -418,12 +97,59 @@ for (var i = 0; i < btns2.length ; i++) {
 
 </script>
 
-<div class="home" style="opacity: 0">
-  	<h1>Galeria</h1>
+<div class="galeriadiv" style="opacity: 0;">
 
+<div class="gallerybox">
+<div class="gallery">
+  <a target="_blank" href="img/foto1.jpg">
+    <img src="img/foto1.jpg" alt="foto1" width="600" height="400">
+  </a></div>
+  
 
+<div class="gallery">
+  <a target="_blank" href="img/foto2.jpg">
+    <img src="img/foto2.jpg" alt="foto2" width="600" height="400">
+  </a></div>
+  
+
+<div class="gallery">
+  <a target="_blank" href="img/foto3.jpg">
+    <img src="img/foto3.jpg" alt="foto3" width="600" height="400">
+  </a></div>
+  
+
+<div class="gallery">
+  <a target="_blank" href="img/foto4.jpg">
+    <img src="img/foto4.jpg" alt="foto4" width="600" height="400">
+  </a></div>
+  
+
+<div class="gallery">
+  <a target="_blank" href="img/foto5.jpg">
+    <img src="img/foto5.jpg" alt="foto5" width="600" height="400">
+  </a></div>
+  
+
+<div class="gallery">
+  <a target="_blank" href="img/foto6.jpg">
+    <img src="img/foto6.jpg" alt="foto6" width="600" height="400">
+  </a></div>
+  
+
+<div class="gallery">
+  <a target="_blank" href="img/foto7.jpg">
+    <img src="img/foto7.jpg" alt="foto7" width="600" height="400">
+  </a></div>
+  
+
+<div class="gallery">
+  <a target="_blank" href="img/foto8.jpg">
+    <img src="img/foto8.jpg" alt="foto8" width="600" height="400">
+  </a></div>
+  
 </div>
 
 
 
-</body></html>
+</body>
+</html>

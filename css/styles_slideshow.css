@@ -1,0 +1,32 @@
+    #slideshow { 
+width: 850px; 
+overflow: hidden; 
+height: 500px;
+border-radius: 20px;
+margin-top: -10px;
+
+
+
+box-shadow: 0 0 20px #555555;
+position: relative;
+float: right;
+}
+    #slideshow img {
+position: absolute;
+right: 0px;
+
+z-index: 1;
+display: none;
+
+}
+    #slideshow p {
+z-index:4;
+position: absolute; 
+width: 100%;
+padding: 10px;
+text-align: center;
+font-size: 20px;
+font-family: Manjari;
+background: rgba(0,0,0,0.5);  
+color:#E2E2E2;
+}
