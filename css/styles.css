@@ -258,7 +258,7 @@ font-family: Manjari;
  .hometext {
  display: block;
 position:relative;
-height: 162px;
+height: 185px;
 text-align: center;
 margin: auto;
 /*background-color: #ffccff;*/
@@ -266,7 +266,7 @@ border-radius: 20px;
 margin-right: auto;
 margin-left: auto;
 overflow: hidden;
-top:-10px;
+top: 10px;
 color: #3B3131;
 font-weight: bold;
 text-decoration: none;
