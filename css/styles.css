@@ -232,27 +232,58 @@ a.icon_bar {display: none;visibility:hidden;};
 }
 
 
+.title{
+  display: block;
+position:relative;
+height: 100px;
+text-align: center;
+margin: auto;
+/*background-color: #ffccff;*/
+border-radius: 20px;
+margin-right: auto;
+margin-left: auto;
+overflow: hidden;
+top:20px;
+color: #3B3131;
+font-weight: bold;
+text-decoration: none;
+font-size: 20px;
+font-family: Manjari;
+}
+
+
 
 
 
  .hometext {
  display: block;
 position:relative;
-height: 150px;
+height: 162px;
 text-align: center;
 margin: auto;
 /*background-color: #ffccff;*/
 border-radius: 20px;
-margin-right: 8px;
-margin-left: 8px;
+margin-right: auto;
+margin-left: auto;
 overflow: hidden;
-top:0px;
+top:-10px;
 color: #3B3131;
 font-weight: bold;
-  font-size: 22px;
-   
+text-decoration: none;
+  font-size: 20px;
+   transition: 0.5s;
   font-family: Manjari;
     }
+
+   .hometext:hover{
+-webkit-filter: saturate(10);
+  filter: saturate(10);
+  top: 10px;
+  text-decoration: none;
+  transition: 0.5s;
+
+
+   } 
 #hiatoriatext{
 display: block;
 position:relative;
@@ -265,7 +296,7 @@ text-align: left;
 
 color: #3B3131;
 font-weight: bold;
-font-size: 26px; 
+font-size: 26px;  
 font-family: Manjari;
 
 
@@ -350,3 +381,19 @@ background-color: #bfbfbf;
 
 }
 
+#home_text{
+display: block;
+position:relative;
+float: center;
+width: 60%;
+top: 20px;
+margin-left: auto;
+margin-right: auto;
+
+text-align: left;
+color: #3B3131;
+font-weight: bold;
+font-size: 26px; 
+font-family: Manjari;
+
+}

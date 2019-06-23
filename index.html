@@ -130,6 +130,22 @@ function Timer(fn, t) {
         return this.stop().start();
     }
 }
+var angle1 = 0;
+$(document).ready(function(){
+  $(".hometext").click(function(){
+
+  		$("#setaD").fadeToggle(200);
+  		$("#setaE").fadeToggle(200);
+  		$("#home_slideshow").slideToggle(600);
+  		$("#home_text").fadeToggle(1000);
+  		angle1 += 180;
+  		$("#setaB").css({"transform":"rotate("+angle1+"deg)","transition": "0.5s"});
+  		
+  
+  })
+
+
+});
 
 </script>
 <div class=home style="opacity: 0">
@@ -146,11 +162,21 @@ function Timer(fn, t) {
 
 </figure>
 
-<div class="hometext" >
+<div class="hometext" ><a href=# style="text-decoration: none;color: #3B3131;">
 <h1>Lagar Artesanal de Vinho<br>
-com Prensa-fuso</h1>
+com Prensa-fuso</h1></a>
+<div id="setaB" ><a href=#><img src="img/seta.svg" width=40px alt="seta esquerda" class="rotate90"></a></div>
 </div>
 
+<div id=home_text style="display: none">
+<p>Situado junto ao centro histórico de Freixo de Numão, o Lagar do Avô é um pequeno núcleo museológico de matriz familiar que reúne alguns utensílios e alfaias agrícolas usadas na viticultura e na vinificação.</p>
+
+<p>De construção rústica, adjacente à própria habitação, edificado com paredes espessas e resistentes de granito e desprovido de vãos para além da porta de acesso, apresenta no interior dois níveis.</p> 
+
+<p>Um, superior, constituído por grandes monólitos solidamente amarrados e até chumbados para não verterem o sumo das uvas aí espremido. Outro, inferior, onde gira um peso grande, em pedra, que tem encastrado um fuso roscado de madeira que atravessa uma vara também de madeira que, na horizontal, cobre o lagar. A rotação manual do peso movimenta a vara que esmaga as uvas, fazendo escoar o vinho, por uma bica, para uma lagareta de pedra de onde se trasfega para os tonéis.
+
+<p>De carácter permanente, a pequena exposição procura, através dos objetos etnográficos expostos e do seu próprio espaço, preservar a memória local e dar a conhecer os métodos e técnicas tradicionais do cultivo da vinha e da produção de vinho.</p></div>
+</pre>
 </div>
 
 </body></html>

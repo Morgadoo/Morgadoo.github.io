@@ -1,3 +1,8 @@
+    
+html { overflow-y: hidden; }
+
+
+
     #home_slideshow { 
 
 overflow: hidden; 
@@ -8,8 +13,6 @@ overflow: hidden;
   border-radius: 20px;
   width: 1500px;
   height: 600px;
-
-
 
 box-shadow: 0 0 20px #555555;
 position: relative;
@@ -40,6 +43,13 @@ color:#E2E2E2;
     -ms-transform: rotate(180deg);
     transform: rotate(180deg);
 }
+.rotate90 {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
 
 #setaD{
 position: absolute;
@@ -52,11 +62,19 @@ padding: 10px;
 transition: 0.5s;
 
 }
+#setaB{
 
-/*#setaD:hover{
-	background-color: #bfbfbf;
-	transition: 0.5s;
-}*/
+position: absolute;
+z-index: 2;
+right: 50%;
+bottom:-10px;
+
+border-radius: 20px;
+padding: 10px;
+transition: 0.5s;
+
+}
+
 
 #setaD:hover {
 	-webkit-filter: saturate(10);
@@ -84,8 +102,5 @@ transition: 0.5s;
   left: 60px;
   transition: 0.5s;
 }
-/*#setaE:hover{
-	background-color: #bfbfbf;
-	transition: 0.5s;
-}*/
+
 
