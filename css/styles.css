@@ -94,14 +94,19 @@ display: block;
  position: absolute;
  top:3px;
  margin-left: 20px;
+ transition: 0.5s;
 
 
   
 
 
 }
-.logo .active{
+.logo:hover {
+  -webkit-filter: saturate(10);
+  filter: saturate(10);
   
+  transition: 0.5s;
+
 
 
 }
