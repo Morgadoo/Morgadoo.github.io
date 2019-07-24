@@ -121,7 +121,7 @@ display: block;
 }
   .logo{
     position: absolute;
-  margin-left: 15%; 
+  margin-left: 8%; 
   top:8px;    
   }
   a.right {
@@ -211,14 +211,12 @@ background-color: #E2E2E2;
 
 }
 
-
-.home{
-overflow: hidden;
-top:0px;
-
-
+#home_slideshow{
 
 }
+
+
+
 
 }
 
