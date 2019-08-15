@@ -213,7 +213,7 @@ text-align: right;
 .contactosbox{
 position:relative;
  
-top:150px;
+top:50px;
 left: 40px;
 width: 350px;
 padding: 5px 20px;
@@ -236,11 +236,11 @@ background-color: #bfbfbf;
 .contactostext{
 
 float: left; 
-margin-top: 270px;
+margin-top: 160px;
 
 display: block;
-top:150px;
-width: 40%;
+
+width: 20%;
 height: 500px
 color: #3B3131;
 font-weight: bold;
@@ -257,10 +257,11 @@ overflow: hidden;
 
 
 div.contactosicon{
- position: absolute;
+position: absolute;
  z-index: 1;
-  top: 305px;
-  left: 450px;
+  top: 300px;
+  right: 50px;
+  
   padding: 2px;
   border-radius: 8px;
   transition: 0.5s;
