@@ -137,7 +137,7 @@ border-radius: 20px;
 margin-right: auto;
 margin-left: auto;
 overflow: hidden;
-top:20px;
+top:10px;
 color: #3B3131;
 font-weight: bold;
 text-decoration: none;
@@ -196,14 +196,16 @@ font-family: Manjari;
 
 }
 #historiaimg{
-
-display: block;
+  display: block;
 position:relative;
-text-align: right;
 float: right;
+ -webkit-transform: scale(0.8); /* Saf3.1+, Chrome */
+     -moz-transform: scale(0.8); /* FF3.5+ */
+      -ms-transform: scale(0.8); /* IE9 */
+       -o-transform: scale(0.8); /* Opera 10.5+ */
+          transform: scale(0.8);
 width: 40%;
-margin-right: 20px;
-top:30px;
+text-align: right;
 
 
 }

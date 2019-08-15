@@ -134,13 +134,84 @@ background-color: #E2E2E2;
   margin-left: -120px;
  transition: 0.5s;
 
+}
 
+#hiatoriatext{
+  display: block;
+position:relative;
+width: 100%;
+text-align: left;
+margin: auto;
+/*background-color: #ffccff;*/
+margin-right: auto;
+margin-left: auto;
+overflow: hidden;
+top: 10px;
+color: #3B3131;
+font-weight: bold;
+text-decoration: none;
+  font-size: 20px;
+   transition: 0.5s;
+  font-family: Manjari;
+
+}
+figcaption {
+text-align: center;
+color: #3B3131;
+font-weight: bold;
+text-decoration: none;
+  font-size: 20px;
+   transition: 0.5s;
+  font-family: Manjari;
+
+
+}
+#historiaimg{
+  display: block;
+position:relative;
+float: center;
+ -webkit-transform: scale(0.7); /* Saf3.1+, Chrome */
+     -moz-transform: scale(0.7); /* FF3.5+ */
+      -ms-transform: scale(0.7); /* IE9 */
+       -o-transform: scale(0.7); /* Opera 10.5+ */
+          transform: scale(0.7);
+width: 115%;
+top:-40px;
+
+}
+
+#historia2007{
+  display: block;
+position:relative;
+  top:-60px;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+ 
+  
   
 
+ 
+}
+
+#historia2018{
+display: block;
+position:relative;
+width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  
+  
+  
 
 }
 
-}
 
+
+
+
+
+
+}
 /*fim janela pequena*/
 
