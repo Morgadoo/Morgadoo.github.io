@@ -328,3 +328,21 @@ font-size: 26px;
 font-family: Manjari;
 
 }
+
+.webcam_{
+
+	background-color: #bfbfbf;
+	color: #3B3131;
+	padding: 5px;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: 0.5s;
+}
+
+.activ , .webcam_:hover{
+background-color: #80002a;
+padding: 10px;
+transition: 0.5s;
+  color: #E2E2E2;
+	border-radius: 8px;
+}
