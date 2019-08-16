@@ -192,6 +192,14 @@ color: #3B3131;
 font-weight: bold;
 font-size: 26px;  
 font-family: Manjari;
+}
+figcaption {
+
+color: #3B3131;
+font-weight: bold;
+   transition: 0.5s;
+  font-family: Manjari;
+
 
 
 }
