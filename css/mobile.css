@@ -277,6 +277,53 @@ position: absolute;
   
 }
 
+#webcam1{
+  position: absolute;
+-webkit-transform: scale(0.6); /* Saf3.1+, Chrome */
+     -moz-transform: scale(0.6); /* FF3.5+ */
+      -ms-transform: scale(0.6); /* IE9 */
+       -o-transform: scale(0.6); /* Opera 10.5+ */
+          transform: scale(0.6);
+        top:150px;
+        left: -40px;
+}
+
+#webcam2{
+    position: absolute;
+-webkit-transform: scale(0.6); /* Saf3.1+, Chrome */
+     -moz-transform: scale(0.6); /* FF3.5+ */
+      -ms-transform: scale(0.6); /* IE9 */
+       -o-transform: scale(0.6); /* Opera 10.5+ */
+          transform: scale(0.6);
+        top:150px;
+        left: -40px;
+
+}
+
+#webcam3{
+    position: absolute;
+-webkit-transform: scale(0.6); /* Saf3.1+, Chrome */
+     -moz-transform: scale(0.6); /* FF3.5+ */
+      -ms-transform: scale(0.6); /* IE9 */
+       -o-transform: scale(0.6); /* Opera 10.5+ */
+          transform: scale(0.6);
+
+        top:150px;
+        left: -40px;
+}
+
+#webcam4{
+    position: absolute;
+-webkit-transform: scale(0.6); /* Saf3.1+, Chrome */
+     -moz-transform: scale(0.6); /* FF3.5+ */
+      -ms-transform: scale(0.6); /* IE9 */
+       -o-transform: scale(0.6); /* Opera 10.5+ */
+          transform: scale(0.6);
+        top:150px;
+        left: -40px;
+}
+
+
 
 
 
