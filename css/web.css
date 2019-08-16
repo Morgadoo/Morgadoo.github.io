@@ -1,0 +1,322 @@
+
+@font-face {
+   font-family: Manjari;
+   src: url(fonts/Manjari-Regular.otf);
+}
+@font-face {
+   font-family: Manjari;
+   src: url(fonts/Manjari-Bold.otf);
+   font-weight: bold;
+}
+@font-face {
+   font-family: Manjari;
+   src: url(fonts/Manjari-Thin.otf);
+   font-weight: thin;
+}
+
+  body {
+    background-color: #E2E2E2;}
+
+
+    #painel {
+    display: block;
+    width:100%;
+    background-color:#3B4131;
+
+  color:#E2E2E2;
+  font-family: Manjari;
+}
+
+  div.navbar {
+    position: -webkit-sticky;
+  position: sticky;
+  z-index: 2;
+  top: 0;
+display: block;
+box-shadow: 0 0 10px #555555;
+border-radius: 20px;
+  margin: auto;
+  overflow: hidden;
+  padding: 50px 10px;
+  margin-right: 8px;
+  margin-left: 8px;
+  background-color: #bfbfbf;
+  font-weight: bold;
+  font-size: 26px;
+  font-family: Manjari;
+}
+
+
+/* Style the navigation bar links */
+.navbar a {
+border-radius: 8px;
+
+display: block;
+  float: right;
+  color: #E2E2E2;
+  text-align: center;
+  padding: 10px 20px;
+  text-decoration: none;
+
+}
+
+
+
+/* Right-aligned link */
+.navbar a.right {
+  background-color: #3B3131; 
+  margin-left:8px;
+  padding-top:12px;
+  padding-bottom:5px;
+  text-align: center;
+  transition: 0.5s;
+  
+}
+
+.navbar a.right:hover {
+  background-color: #E2E2E2;
+  color: #3B3131;
+  transition: 0.5s;
+}
+
+.navbar  a.active {
+  background-color: #80002a;
+  transition: 0.5s;
+}
+
+.navbar a + .right .active:hover {
+  background-color: #E2E2E2;
+  transition: 0.5s;
+  color: #3B3131;
+}
+
+.logo{
+ position: absolute;
+ -webkit-transform: scale(0.4); /* Saf3.1+, Chrome */
+     -moz-transform: scale(0.4); /* FF3.5+ */
+      -ms-transform: scale(0.4); /* IE9 */
+       -o-transform: scale(0.4); /* Opera 10.5+ */
+          transform: scale(0.4);
+  top:-80px;
+ transition: 0.5s;
+
+
+  
+
+
+}
+.logo:hover {
+  -webkit-filter: saturate(10);
+  filter: saturate(10);
+  
+  transition: 0.5s;
+
+
+
+}
+
+
+
+
+/*Janela grande */
+@media screen and (min-width:1080px) {
+#icon{display: none;  };
+#icon_sub {display: none;};
+a.icon_bar {display: none;visibility:hidden;};
+}
+
+
+.title{
+  display: block;
+position:relative;
+height: 100px;
+text-align: center;
+margin: auto;
+/*background-color: #ffccff;*/
+border-radius: 20px;
+margin-right: auto;
+margin-left: auto;
+overflow: hidden;
+top:10px;
+color: #3B3131;
+font-weight: bold;
+text-decoration: none;
+font-size: 20px;
+font-family: Manjari;
+}
+
+
+
+
+
+ .hometext {
+ display: block;
+position:relative;
+height: 185px;
+text-align: center;
+margin: auto;
+/*background-color: #ffccff;*/
+border-radius: 20px;
+margin-right: auto;
+margin-left: auto;
+overflow: hidden;
+top: 10px;
+color: #3B3131;
+font-weight: bold;
+text-decoration: none;
+  font-size: 20px;
+   transition: 0.5s;
+  font-family: Manjari;
+    }
+
+   .hometext:hover{
+-webkit-filter: saturate(10);
+  filter: saturate(10);
+  top: 10px;
+  text-decoration: none;
+  transition: 0.5s;
+
+
+   } 
+#hiatoriatext{
+display: block;
+position:relative;
+float: left;
+width: 50%;
+margin-left: 20px;
+top:20px;
+
+text-align: left;
+
+color: #3B3131;
+font-weight: bold;
+font-size: 26px;  
+font-family: Manjari;
+
+
+}
+#historiaimg{
+  display: block;
+position:relative;
+float: right;
+ -webkit-transform: scale(0.8); /* Saf3.1+, Chrome */
+     -moz-transform: scale(0.8); /* FF3.5+ */
+      -ms-transform: scale(0.8); /* IE9 */
+       -o-transform: scale(0.8); /* Opera 10.5+ */
+          transform: scale(0.8);
+width: 40%;
+text-align: right;
+
+
+}
+
+
+#historia2007{
+  display: block;
+position:relative;
+float: left;
+  width: 60%;
+  top:40px;
+  left: 20px;
+  
+
+ 
+}
+
+#historia2018{
+display: block;
+position:relative;
+float: left;
+width: 60%;
+top:-195px;
+left: 400px;  
+  
+
+}
+
+
+
+.contactosbox{
+position:relative;
+ 
+top:50px;
+left: 40px;
+width: 350px;
+padding: 5px 20px;
+border-radius: 20px;
+color: #3B3131;
+font-weight: bold;
+font-size: 26px; 
+font-family: Manjari;
+text-align: left;
+background-color: #bfbfbf;
+
+
+
+
+
+}
+
+
+
+.contactostext{
+
+float: left; 
+margin-top: 160px;
+
+display: block;
+
+width: 20%;
+height: 500px
+color: #3B3131;
+font-weight: bold;
+margin-left: 60px;
+  margin-right: auto;
+font-size: 26px; 
+font-family: Manjari;
+text-align: left;
+overflow: hidden;
+
+
+}
+
+
+
+div.contactosicon{
+position: absolute;
+ z-index: 1;
+  top: 300px;
+  right: 50px;
+  
+  padding: 2px;
+  border-radius: 8px;
+  transition: 0.5s;
+  border: 4px solid #bfbfbf;
+  
+  
+  
+}
+div.contactosicon:hover{
+
+
+background-color: #bfbfbf;
+  transition: 0.5s;
+
+}
+
+#home_text{
+display: block;
+position:relative;
+float: center;
+width: 90%;
+top: 20px;
+margin-left: auto;
+margin-right: auto;
+
+text-align: left;
+color: #3B3131;
+font-weight: bold;
+font-size: 26px; 
+font-family: Manjari;
+
+}

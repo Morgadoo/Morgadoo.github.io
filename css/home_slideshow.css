@@ -117,21 +117,6 @@ transition: 0.5s;
   width: 880px;
   height: 352px;
 
-
-}
-
-@media screen and (max-width:500px) {
-
-#home_slideshow {
-  overflow: hidden;
-  object-fit: fill;
-  width: 95%;
-  height: 350px;
-}
-#home_slideshow img {
-  left: -60%;
-  width: 880px;
-  height: 352px;
 }
 
 #setaD{
