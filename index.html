@@ -5,9 +5,6 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
-
-		<script type="module" src="build/three.js"></script>
-		<script type="module" src="3d/OBJLoader.js"></script>
 	</head>
 	<body>
 
@@ -42,7 +39,7 @@
 
 				scene = new THREE.Scene();
 
-				var geometry = new THREE.SphereBufferGeometry( 500, 40, 40 );
+				var geometry = new THREE.SphereBufferGeometry( 500, 20, 20 );
 
 				// invert the geometry on the x-axis so that all of the faces point inward
 				geometry.scale( - 2, 2, 2 );
@@ -58,21 +55,34 @@
 
 				// Arrow
 
-				
-					
-					var arrow;
+var arrow;
+var arrow_material = new THREE.MeshStandardMaterial( { color: 0xffffff, roughness:0.2,envMap:texture} );
+var loader_arrow = new OBJLoader();
 
-					var loader = new OBJLoader();
+var geometry1 = new THREE.BoxGeometry( 1, 1, 1 );
+var material1 = new THREE.MeshBasicMaterial( {opacity:0.0, transparent:true} );
+var cube = new THREE.Mesh( geometry1, material1 );
+scene.add( cube );
+cube.position.set(-3,-1,3);
 
-
-					loader.load(
+// load a resource
+loader_arrow.load(
 	// resource URL
 	'3d/arrow.obj',
 	// called when resource is loaded
 	function ( object ) {
-
-		arrow = object;
+		object.traverse( function( child ) {
+            if ( child instanceof THREE.Mesh ) {
+                child.material = arrow_material;
+            }
+        } );
+        arrow = object;
+		arrow.position.set(-3,-1,3);
+		arrow.lookAt(0,-1,4);
 		scene.add( arrow );
+		console.log(arrow);
+		
+		
 
 	},
 	// called when loading is in progresses
@@ -90,20 +100,95 @@
 );
 
 
-					
-	
-					
 
-					arrow.position.set(2,-1,-2);
+//select seta
 
 
 
+var plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -10);
+var raycaster = new THREE.Raycaster();
+var mouse = new THREE.Vector2();
+var pointOfIntersection = new THREE.Vector3();
+var screen = 1;
+
+
+				document.addEventListener( 'mousedown', onDocumentMouseDown );
+
+        function onDocumentMouseDown( event ) {    
+          
+      
+			/*mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+    		mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+  			raycaster.setFromCamera(mouse, camera);
+  			raycaster.ray.intersectPlane(plane, pointOfIntersection);
+  			console.log(pointOfIntersection);
+  			arrow.lookAt(pointOfIntersection);*/
+
+				mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+				mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+				raycaster.setFromCamera( mouse, camera );
+				var intersect = raycaster.intersectObject( cube );
+
+				
+
+				if (intersect.length > 0 && screen == 1){
+					texture = new THREE.TextureLoader().load( '360img/2.jpg' );
+					var material = new THREE.MeshBasicMaterial( { map: texture } );
+					mesh = new THREE.Mesh( geometry, material );
+					scene.add( mesh );
+					console.log("intersect");
+					screen = 2;
+					arrow.position.set(3.5,-1,-3);
+					arrow.lookAt(3, -1, 0);
+					pointLight.position.set( -3, 4, 1 );
+					cube.position.set(3.5,-1,-3);
+					}
+					else if(intersect.length > 0 && screen == 2){
+					texture = new THREE.TextureLoader().load( '360img/1.jpg' );
+					var material = new THREE.MeshBasicMaterial( { map: texture } );
+					mesh = new THREE.Mesh( geometry, material );
+					scene.add( mesh );
+					console.log("intersect");
+					screen = 1;
+					arrow.position.set(-3,-1,3);
+					arrow.lookAt(0,-1,4);
+					cube.position.set(-3,-1,3);
+					pointLight.position.set( 0, 4, 1 );
+
+					}
+
+
+
+
+        }
+
+        
 
 
 
 
 
-				renderer = new THREE.WebGLRenderer();
+
+
+
+
+
+
+			//
+
+			var pointLight = new THREE.PointLight( 0xFFF9CE, 1.3, 100 );//( color : Integer, intensity : Float, distance : Number, decay : Float )
+			pointLight.position.set( 0, 4, 1 );
+			scene.add( pointLight );
+
+
+
+
+
+
+
+
+				renderer = new THREE.WebGLRenderer({antialias: true});
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
@@ -162,6 +247,12 @@
 				window.addEventListener( 'resize', onWindowResize, false );
 
 			}
+
+
+
+
+
+
 
 			function onWindowResize() {
 
@@ -228,12 +319,14 @@
 
 			function update() {
 
-				/*if ( isUserInteracting === false ) {
+				if ( isUserInteracting === false ) {
 
 					lon += 0.05;
 
 
-				}*/
+				}
+			
+			
 
 				lat = Math.max( - 85, Math.min( 85, lat ) );
 				phi = THREE.MathUtils.degToRad( 90 - lat );
