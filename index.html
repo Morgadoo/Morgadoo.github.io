@@ -60,7 +60,7 @@
 
 					object.traverse( function ( child ) {
 
-						if ( child.isMesh ) child.material.map = texture;
+						if ( child.isMesh ) child.material.map = texture1;
 
 					} );
 
@@ -79,9 +79,7 @@
 
 				// texture
 
-				var textureLoader = new THREE.TextureLoader( manager );
-
-				var texture = textureLoader.load( 'textures/uv_grid_opengl.jpg' );
+				var texture1 = new THREE.MeshBasicMaterial( { color: 0x00FFFF, flatShading: true} );
 
 				// model
 
