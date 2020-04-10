@@ -6,8 +6,8 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
 
-		<script src="build/three.js"></script>
-		<script src="3d/OBJLoader.js"></script>
+		<script type="module" src="build/three.js"></script>
+		<script type="module" src="3d/OBJLoader.js"></script>
 	</head>
 	<body>
 
@@ -17,7 +17,7 @@
 
 			import * as THREE from './build/three.module.js';
 
-			import { OBJLoader } from './jsm/loaders/OBJLoader.js';
+			import { OBJLoader } from './3d/OBJLoader.js';
 
 
 			var camera, scene, renderer;
