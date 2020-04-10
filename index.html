@@ -16,8 +16,6 @@
 
 			import * as THREE from './build/three.module.js';
 
-			import { OBJLoader } from './loaders/OBJLoader.js';
-
 			var camera, scene, renderer;
 
 			var isUserInteracting = false,
@@ -49,71 +47,20 @@
 
 				var material = new THREE.MeshBasicMaterial( { map: texture } );
 
-				// Arrow
-
-
-				var object;
-
-				// manager
-
-				function loadModel() {
-
-					object.traverse( function ( child ) {
-
-						if ( child.isMesh ) child.material.map = texture1;
-
-					} );
-
-					object.position.set(-3,-1,1.75);
-					scene.add( object );
-
-				}
-
-				var manager = new THREE.LoadingManager( loadModel );
-
-				manager.onProgress = function ( item, loaded, total ) {
-
-					console.log( item, loaded, total );
-
-				};
-
-				// texture
-
-				var texture1 = new THREE.MeshBasicMaterial( { color: 0x00FFFF, flatShading: true} );
-
-				// model
-
-				function onProgress( xhr ) {
-
-					if ( xhr.lengthComputable ) {
-
-						var percentComplete = xhr.loaded / xhr.total * 100;
-						console.log( 'model ' + Math.round( percentComplete, 2 ) + '% downloaded' );
-
-					}
-
-				}
-
-				function onError() {}
-
-				var loader = new OBJLoader( manager );
-
-				loader.load( '3d/arrow.obj', function ( obj ) {
-
-					object = obj;
-
-				}, onProgress, onError );
-
-				//
-
-
-
-			
-
 				mesh = new THREE.Mesh( geometry, material );
 
 				
 				scene.add( mesh );
+
+				// Arrow
+
+
+			
+
+			
+
+
+
 
 
 
