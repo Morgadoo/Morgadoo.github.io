@@ -85,3 +85,13 @@ a, button, input, select {
 	color: #777777;
 	font-size: 12px;
 }
+
+.logo{
+	position: absolute;
+    overflow: hidden;
+	display: block;
+	float: left;
+	z-index: 2;
+	filter: brightness(50);
+	padding: 10px;
+}
