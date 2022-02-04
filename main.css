@@ -133,11 +133,13 @@ html{
     left: 0;
     outline: none;
     overflow:auto;
+	z-index: -1;
 }
 
 .loading_bar{
  position:fixed;
- bottom: 0%;
+ /* bottom: 0%; */
+ top: 0%;
  width:100%;
  height: 2%;
  background-color: #00504a;
@@ -971,7 +973,7 @@ input, select, textarea {
 		}
 
 /* Icons */
-
+/* 
 	ul.icons {
 		cursor: default;
 	}
@@ -987,10 +989,38 @@ input, select, textarea {
 			height: 4em;
 			line-height: 2em;
 			text-align: center;
+
 			border: 0;
 			
+		} */
+
+/* Icons */
+
+ul.icons {
+	cursor: default;
+	list-style: none;
+	padding-left: 0;
+}
+
+	ul.icons li {
+		display: inline-block;
+		padding: 1em 2em 0em 0;
+	}
+
+		ul.icons li:last-child {
+			padding-right: 0;
 		}
 
+		ul.icons li .icon:before {
+			font-size: 1.5em;
+		}
+		
+		a:hover {
+			border-bottom-color: transparent;
+			color: #49bf9d !important;
+			text-decoration: none;
+		}
+	
 /* Sections/Article */
 
 	header {
@@ -1677,7 +1707,7 @@ input, select, textarea {
 			align-items: center;
 			justify-content: center;
 			text-align: center;
-			padding: 3em 0 3em 0;
+			padding: 0em 0 10em 0;  /*3em 0 3em 0;*/
 
 		}
 
@@ -1830,9 +1860,9 @@ input, select, textarea {
 					display: none !important;
 				}
 
-				.main.style2 .button.anchored {
+				/* .main.style2 .button.anchored {
 					display: none;
-				}
+				} */
 
 				.main.style2 .content {
 					width: 100%;
