@@ -1535,7 +1535,8 @@ ul.icons {
 			}
 
 			.main.style1 {
-				padding: 4em 15px 4em 15px;
+				padding: 0em 15px 10em 15px;
+				/* padding: 0em 0 10em 0; */
 			}
 
 				.main.style1 h2 {
@@ -1543,24 +1544,21 @@ ul.icons {
 				}
 
 			.main.style2 {
-				padding: 6em 15px 6em 15px;
+				padding: 0em 15px 10em 15px;
 			}
 
 				.main.style2:before, .main.style2:after {
 					display: none !important;
 				}
 
-				.main.style2 .button.anchored {   
-					display: none;   											/*----*/
-				}
+				/* .main.style2 .button.anchored {   
+					display: none;
+				} */
 
 				.main.style2 .content {
 					width: 100%;
 					max-width: 100%;
 					text-align: center;
-					-moz-transform: none;
-					-webkit-transform: none;
-					-ms-transform: none;
 					transform: none;
 				}
 
